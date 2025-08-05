@@ -1,7 +1,7 @@
-import 'dart:developer';
-
-import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
 import '../../../../../models/product_model.dart';
 
 import '../widgets/promoted_card_widget.dart';
@@ -47,12 +47,17 @@ class AcceuilMobileScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Buy&Sell'.tr(), style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 22, color: Colors.black)),
+                  Text('Buy&Sell'.tr(),
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 22,
+                          color: Colors.black)),
                   InkWell(
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (_) => MarketplaceArticlesScreen()),
+                        MaterialPageRoute(
+                            builder: (_) => MarketplaceArticlesScreen()),
                       );
                     },
                     child: Image.asset(
@@ -64,18 +69,30 @@ class AcceuilMobileScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 4),
-              Text('23456 Results'.tr(), style: Theme.of(context).textTheme.labelSmall!.copyWith(color: Colors.grey)),
+              Text('23456 Results'.tr(),
+                  style: Theme.of(context)
+                      .textTheme
+                      .labelSmall!
+                      .copyWith(color: Colors.grey)),
               const SizedBox(height: 16),
               Row(
                 children: [
                   const Icon(Icons.location_on_outlined, size: 16),
                   const SizedBox(width: 4),
-                  Text('Location'.tr(), style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.w500)),
+                  Text('Location'.tr(),
+                      style: Theme.of(context)
+                          .textTheme
+                          .labelSmall!
+                          .copyWith(fontWeight: FontWeight.w500)),
                   const Icon(Icons.keyboard_arrow_down, size: 18),
                   const Spacer(),
                   const Icon(Icons.map_outlined, color: Colors.orange),
                   const SizedBox(width: 4),
-                  Text("See Map".tr(), style: Theme.of(context).textTheme.labelSmall!.copyWith(color: Colors.orange))
+                  Text("See Map".tr(),
+                      style: Theme.of(context)
+                          .textTheme
+                          .labelSmall!
+                          .copyWith(color: Colors.orange))
                 ],
               ),
               const SizedBox(height: 20),
@@ -90,12 +107,24 @@ class AcceuilMobileScreen extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Frash & Original".tr(), style: Theme.of(context).textTheme.labelSmall!.copyWith(color: Colors.grey)),
+                        Text("Frash & Original".tr(),
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelSmall!
+                                .copyWith(color: Colors.grey)),
                         const SizedBox(height: 4),
                         Text("iBike 7 Speed".tr(),
-                            style: Theme.of(context).textTheme.labelSmall!.copyWith(fontSize: 18, fontWeight: FontWeight.bold)),
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelSmall!
+                                .copyWith(
+                                    fontSize: 18, fontWeight: FontWeight.bold)),
                         const SizedBox(height: 4),
-                        Text("\$900", style: Theme.of(context).textTheme.labelSmall!.copyWith(color: Colors.blue)),
+                        Text("\$900",
+                            style: Theme.of(context)
+                                .textTheme
+                                .labelSmall!
+                                .copyWith(color: Colors.blue)),
                       ],
                     ),
                     const Spacer(),
@@ -123,7 +152,10 @@ class AcceuilMobileScreen extends StatelessWidget {
 
               Text(
                 "Urgent Selling".tr(),
-                style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold),
+                style: Theme.of(context)
+                    .textTheme
+                    .labelSmall!
+                    .copyWith(fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 8),
               SizedBox(
@@ -131,7 +163,8 @@ class AcceuilMobileScreen extends StatelessWidget {
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: promotedProducts.length,
-                  itemBuilder: (context, index) => PromotedCard(product: promotedProducts[index]),
+                  itemBuilder: (context, index) =>
+                      PromotedCard(product: promotedProducts[index]),
                 ),
               ),
               const SizedBox(height: 20),
