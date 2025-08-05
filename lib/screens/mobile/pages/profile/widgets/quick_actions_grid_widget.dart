@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shop_easy3/pages/profile/widgets/quick_action_widget.dart';
+import 'package:shop_easy3/screens/mobile/pages/profile/widgets/quick_action_widget.dart';
 
 class QuickActionsGrid extends StatelessWidget {
   const QuickActionsGrid({super.key});

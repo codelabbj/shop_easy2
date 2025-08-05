@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../models/message_model.dart';
+import '../../../../../models/message_model.dart';
+
 import '../widgets/message_bubble_widget.dart';
 
 class ChatMobileScreen extends StatefulWidget {

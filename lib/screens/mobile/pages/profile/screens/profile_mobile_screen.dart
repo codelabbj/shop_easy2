@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shop_easy3/pages/profile/widgets/profile_header_widget.dart';
-import 'package:shop_easy3/pages/profile/widgets/quick_actions_grid_widget.dart';
 
+import '../widgets/profile_header_widget.dart';
 import '../widgets/profile_menu_items_widget.dart';
+import '../widgets/quick_actions_grid_widget.dart';
 
 class ProfileMobileScreen extends StatelessWidget {
   const ProfileMobileScreen({Key? key}) : super(key: key);

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../pages/acceuil/screens/acceuil_mobile_screen.dart';
+import '../pages/acceuil/screens/marketplace_articles_screen.dart';
 import '../pages/chat/screens/chat_mobile_screen.dart';
 import '../pages/profile/screens/profile_mobile_screen.dart';
 import '../pages/search/screens/search_mobile_screen.dart';
@@ -37,10 +38,12 @@ class bottomConst {
     {
       'icon': Image.asset(
         "assets/images/marketplace1.png",
-        width: 28,
-        height: 28,
+        width: 21,
+        height: 21,
       ),
-      'is_center': true, // marque le bouton flottant central
+      'active_icon': Image.asset("assets/images/marketplace1.png", width: 30, height: 30, color: Color(0xFFFF9B00)),
+      "screen": MarketplaceArticlesScreen(),
+      "label": "Marketplace"
     },
     {
       'icon': Image.asset(

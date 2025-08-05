@@ -42,29 +42,29 @@ class _HomePageState extends State<HomeMobileScreen> {
           children: List.generate(bottomConst.bottomList.length, (index) {
             final item = bottomConst.bottomList[index];
 
-            if (item.containsKey('is_center')) {
-              final isActive = _currentIndex == index;
-              return GestureDetector(
-                onTap: () => _onItemTapped(index),
-                child: Container(
-                  width: 55,
-                  height: 55,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: isActive ? Colors.blue : Colors.white,
-                    boxShadow: const [BoxShadow(color: Colors.black26, blurRadius: 5)],
-                  ),
-                  child: Center(
-                    child: Image.asset(
-                      "assets/images/panier.png",
-                      width: 24,
-                      height: 24,
-                      color: isActive ? Colors.white : Colors.black,
-                    ),
-                  ),
-                ),
-              );
-            }
+            // if (item.containsKey('is_center')) {
+            //   final isActive = _currentIndex == index;
+            //   return GestureDetector(
+            //     onTap: () => _onItemTapped(index),
+            //     child: Container(
+            //       width: 55,
+            //       height: 55,
+            //       decoration: BoxDecoration(
+            //         shape: BoxShape.circle,
+            //         color: isActive ? Colors.blue : Colors.white,
+            //         boxShadow: const [BoxShadow(color: Colors.black26, blurRadius: 5)],
+            //       ),
+            //       child: Center(
+            //         child: Image.asset(
+            //           "assets/images/panier.png",
+            //           width: 24,
+            //           height: 24,
+            //           color: isActive ? Colors.white : Colors.black,
+            //         ),
+            //       ),
+            //     ),
+            //   );
+            // }
 
             final isActive = _currentIndex == index;
             return GestureDetector(

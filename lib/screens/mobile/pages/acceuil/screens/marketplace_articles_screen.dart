@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shop_easy3/pages/home_mobile_screen.dart';
 
-import '../../../constantes/const.dart';
-import '../../../models/product_model.dart';
-
+import '../../../../../constantes/const.dart';
+import '../../../../../models/product_model.dart';
+import '../../home_mobile_screen.dart';
 import '../widgets/filter_bar_widget.dart';
 import '../widgets/product_card_widget.dart';
 import '../widgets/search_widget.dart';

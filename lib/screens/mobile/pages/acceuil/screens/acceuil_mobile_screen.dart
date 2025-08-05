@@ -2,7 +2,8 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
-import '../../../models/product_model.dart';
+import '../../../../../models/product_model.dart';
+
 import '../widgets/promoted_card_widget.dart';
 import 'marketplace_articles_screen.dart';
 
