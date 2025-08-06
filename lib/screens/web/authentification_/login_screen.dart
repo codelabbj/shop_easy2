@@ -28,11 +28,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text("Welcome Back",
-                      style: Theme.of(context).textTheme.headlineMedium),
+                  Text("Welcome Back", style: Theme.of(context).textTheme.headlineMedium),
                   const SizedBox(height: 8),
-                  const Text(
-                      "Enter your email and password to access your account."),
+                  const Text("Enter your email and password to access your account."),
                   const SizedBox(height: 24),
                   CustomTextFormField(
                     label: "Email",
@@ -47,9 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     obscureText: _obscurePassword,
                     suffixIcon: IconButton(
                       icon: Icon(
-                        _obscurePassword
-                            ? Icons.visibility_off_outlined
-                            : Icons.visibility,
+                        _obscurePassword ? Icons.visibility_off_outlined : Icons.visibility,
                         color: Colors.grey[500],
                       ),
                       onPressed: () {
@@ -80,10 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         onPressed: () {},
                         child: Text(
                           "Forgot Your Password?",
-                          style: Theme.of(context)
-                              .textTheme
-                              .displaySmall!
-                              .copyWith(color: Colors.blueAccent),
+                          style: Theme.of(context).textTheme.displaySmall!.copyWith(color: Colors.blueAccent),
                         ),
                       ),
                     ],
@@ -94,18 +87,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 45,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blueAccent,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(5))),
+                          backgroundColor: Colors.blueAccent, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
                       onPressed: () {
                         // Call login logic
                       },
                       child: Text(
                         "Log In",
-                        style: Theme.of(context)
-                            .textTheme
-                            .labelMedium!
-                            .copyWith(color: Colors.white),
+                        style: Theme.of(context).textTheme.labelMedium!.copyWith(color: Colors.white),
                       ),
                     ),
                   ),
@@ -113,19 +101,14 @@ class _LoginScreenState extends State<LoginScreen> {
                   Center(
                       child: Text(
                     "Or Login With",
-                    style: Theme.of(context)
-                        .textTheme
-                        .labelSmall!
-                        .copyWith(color: Colors.grey[500]),
+                    style: Theme.of(context).textTheme.labelSmall!.copyWith(color: Colors.grey[500]),
                   )),
                   const SizedBox(height: 12),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       OutlinedButton.icon(
-                        style: OutlinedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5))),
+                        style: OutlinedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
                         icon: const Icon(
                           Icons.g_mobiledata,
                           color: Colors.blueAccent,
@@ -139,9 +122,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       const SizedBox(width: 16),
                       OutlinedButton.icon(
-                        style: OutlinedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5))),
+                        style: OutlinedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
                         icon: const Icon(
                           Icons.apple,
                           size: 35,
@@ -161,19 +142,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Text.rich(
                         TextSpan(
                           text: "Don’t Have An Account? ",
-                          style: Theme.of(context)
-                              .textTheme
-                              .labelMedium!
-                              .copyWith(),
+                          style: Theme.of(context).textTheme.labelMedium!.copyWith(),
                           children: [
                             TextSpan(
                               text: "Register Now.",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .labelMedium!
-                                  .copyWith(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.blueAccent),
+                              style: Theme.of(context).textTheme.labelMedium!.copyWith(fontWeight: FontWeight.bold, color: Colors.blueAccent),
                             )
                           ],
                         ),
@@ -189,15 +162,10 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Container(
                   width: double.infinity,
                   height: double.infinity,
-                  decoration: BoxDecoration(
-                      color: Colors.blueAccent,
-                      borderRadius: BorderRadius.circular(30)),
+                  decoration: BoxDecoration(color: Colors.blueAccent, borderRadius: BorderRadius.circular(30)),
                   child: Container(
                     margin: EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage(
-                                'assets/images/image_dasboard.png'))),
+                    decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/image_dasboard.webp'))),
                   )))
         ],
       ),
