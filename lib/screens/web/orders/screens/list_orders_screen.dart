@@ -1,32 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:shop_easy3/screens/web/orders/widgets/orders_tab_widget.dart';
+import 'package:shop_easy3/screens/web/orders/widgets/sales_card_widget.dart';
 
-import 'package:shop_easy3/screens/web/products/widgets/product_table_widget.dart';
-import 'package:shop_easy3/screens/web/widgets/app_bar_widget.dart';
+import '../../widgets/app_bar_widget.dart';
 
-class ListProductScreen extends StatefulWidget {
-  const ListProductScreen({super.key});
+class ListOrdersScreen extends StatefulWidget {
+  const ListOrdersScreen({super.key});
 
   @override
-  State<ListProductScreen> createState() => _ListProductScreenState();
+  State<ListOrdersScreen> createState() => _ListOrdersScreenState();
 }
 
-class _ListProductScreenState extends State<ListProductScreen> {
-  @override
-  void initState() {
-    super.initState();
-
-    // _checkAuthentication();
-    // context.read<CollaborateursCubit>().getCustomerDetails();
-  }
-  //
-  // void _checkAuthentication() async {
-  //   final token = SharedPreferencesUtils.getString('auth_token');
-  //   if (token == null || token.isEmpty) {
-  //     // Rediriger vers la page de login
-  //     context.go('/login'); // ou Navigator.of(context).pushReplacementNamed('/login');
-  //   }
-// }
-
+class _ListOrdersScreenState extends State<ListOrdersScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,8 +23,66 @@ class _ListProductScreenState extends State<ListProductScreen> {
               child: Column(
                 children: [
                   SizedBox(height: 60, child: AppBarWidget()),
-                  SizedBox(
-                    height: 30,
+                  SizedBox(height: 30),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: SalesCardWidget(
+                          title: 'Total Sales',
+                          subtitle: 'Total earnings from sales.',
+                          amount: '\$189,374',
+                          percentage: '9%',
+                          isPositive: true,
+                          footerText: 'From last month',
+                          onDetailTap: () {
+                            // action on detail click
+                            print("Details tapped!");
+                          },
+                        ),
+                      ),
+                      Expanded(
+                        child: SalesCardWidget(
+                          title: 'Total Sales',
+                          subtitle: 'Total earnings from sales.',
+                          amount: '\$189,374',
+                          percentage: '9%',
+                          isPositive: true,
+                          footerText: 'From last month',
+                          onDetailTap: () {
+                            // action on detail click
+                            print("Details tapped!");
+                          },
+                        ),
+                      ),
+                      Expanded(
+                        child: SalesCardWidget(
+                          title: 'Total Sales',
+                          subtitle: 'Total earnings from sales.',
+                          amount: '\$189,374',
+                          percentage: '9%',
+                          isPositive: true,
+                          footerText: 'From last month',
+                          onDetailTap: () {
+                            // action on detail click
+                            print("Details tapped!");
+                          },
+                        ),
+                      ),
+                      Expanded(
+                        child: SalesCardWidget(
+                          title: 'Total Sales',
+                          subtitle: 'Total earnings from sales.',
+                          amount: '\$189,374',
+                          percentage: '9%',
+                          isPositive: true,
+                          footerText: 'From last month',
+                          onDetailTap: () {
+                            // action on detail click
+                            print("Details tapped!");
+                          },
+                        ),
+                      ),
+                    ],
                   ),
                   Expanded(
                     child: Container(
@@ -66,32 +109,16 @@ class _ListProductScreenState extends State<ListProductScreen> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "Product List",
+                                    "Product Transaction",
                                     style: Theme.of(context).textTheme.displayMedium!.copyWith(fontWeight: FontWeight.bold),
                                   ),
                                   Text(
-                                    "Tracks stocks levels",
+                                    "Latest transaction sales in real time.",
                                     style: Theme.of(context).textTheme.displaySmall!.copyWith(color: Colors.grey[300]),
                                   ),
                                 ],
                               ),
                               Spacer(),
-                              Container(
-                                padding: EdgeInsets.all(5),
-                                decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
-                                child: Row(
-                                  children: [
-                                    Icon(
-                                      Icons.add,
-                                      size: 18,
-                                    ),
-                                    Text(
-                                      "Add Product",
-                                      style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold),
-                                    ),
-                                  ],
-                                ),
-                              ),
                               SizedBox(
                                 width: 10,
                               ),
@@ -114,34 +141,57 @@ class _ListProductScreenState extends State<ListProductScreen> {
                                 ),
                               ),
                               SizedBox(
-                                width: 10,
-                              ),
-                              Container(
-                                padding: EdgeInsets.all(5),
-                                decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
-                                child: Icon(Icons.picture_in_picture_alt_outlined, size: 18, color: Colors.black),
-                              ),
-                              SizedBox(
-                                width: 10,
+                                width: 12,
                               ),
                               Container(
                                 padding: EdgeInsets.all(5),
                                 decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
                                 child: Row(
                                   children: [
-                                    Icon(Icons.grid_view, size: 18, color: Colors.grey),
-                                    Icon(
-                                      Icons.table_rows_outlined,
-                                      size: 18,
-                                      color: Colors.grey,
+                                    Image.asset(
+                                      "assets/images/engrenages.png",
+                                      width: 18,
+                                      height: 18,
+                                      color: Colors.black,
+                                    ),
+                                    Text(
+                                      "Customize",
+                                      style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold),
                                     ),
                                   ],
                                 ),
-                              )
+                              ),
+                              SizedBox(
+                                width: 12,
+                              ),
+                              Container(
+                                padding: EdgeInsets.all(5),
+                                decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
+                                child: Row(
+                                  children: [
+                                    Image.asset(
+                                      "assets/images/telecharger.png",
+                                      width: 18,
+                                      height: 18,
+                                      color: Colors.black,
+                                    ),
+                                    Text(
+                                      "Export",
+                                      style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ],
                           ),
                           SizedBox(height: 12),
-                          Expanded(flex: 9, child: SingleChildScrollView(scrollDirection: Axis.horizontal, child: ProductTableWidget())),
+                          Expanded(
+                            flex: 9,
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: OrdersTabWidget(),
+                            ),
+                          ),
                           Spacer(),
                           Row(
                             children: [

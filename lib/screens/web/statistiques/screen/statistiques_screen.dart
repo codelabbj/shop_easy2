@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shop_easy3/screens/web/pages/statistiques/widgets/add_products_widget.dart';
 
-import '../../../widgets/app_bar_widget.dart';
-import '../../../widgets/drawer_widget.dart';
+import '../../widgets/app_bar_widget.dart';
+import '../widgets/add_products_widget.dart';
 
 class StatistiquesScreen extends StatefulWidget {
   const StatistiquesScreen({super.key});
@@ -52,8 +51,7 @@ class _StatistiquesScreenState extends State<StatistiquesScreen> {
                           color: Colors.grey.withValues(alpha: 0.2),
                           spreadRadius: 10,
                           blurRadius: 10,
-                          offset: Offset(0,
-                              3), // Décalage horizontal et vertical de l'ombre
+                          offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
                         ),
                       ],
                     ),
@@ -63,9 +61,7 @@ class _StatistiquesScreenState extends State<StatistiquesScreen> {
                           margin: EdgeInsets.all(10),
                           padding: EdgeInsets.all(5),
                           decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(5),
-                              border: Border.all(color: Colors.grey[300]!)),
+                              color: Colors.white, borderRadius: BorderRadius.circular(5), border: Border.all(color: Colors.grey[300]!)),
                           child: Icon(Icons.arrow_back),
                         ),
                         Column(
@@ -77,10 +73,7 @@ class _StatistiquesScreenState extends State<StatistiquesScreen> {
                             ),
                             Text(
                               "you can see all sales analysis result more completely",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .labelMedium!
-                                  .copyWith(color: Colors.grey[300]),
+                              style: Theme.of(context).textTheme.labelMedium!.copyWith(color: Colors.grey[300]),
                             )
                           ],
                         )
@@ -103,8 +96,7 @@ class _StatistiquesScreenState extends State<StatistiquesScreen> {
                                 color: Colors.grey.withValues(alpha: 0.2),
                                 spreadRadius: 10,
                                 blurRadius: 10,
-                                offset: Offset(0,
-                                    3), // Décalage horizontal et vertical de l'ombre
+                                offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
                               ),
                             ],
                           ),
