@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shop_easy3/screens/web/orders/widgets/orders_tab_widget.dart';
 import 'package:shop_easy3/screens/web/orders/widgets/sales_card_widget.dart';
 
+import '../../../../constantes/const.dart';
 import '../../widgets/app_bar_widget.dart';
 
 class ListOrdersScreen extends StatefulWidget {
@@ -189,7 +190,12 @@ class _ListOrdersScreenState extends State<ListOrdersScreen> {
                             flex: 9,
                             child: SingleChildScrollView(
                               scrollDirection: Axis.horizontal,
-                              child: OrdersTabWidget(),
+                              child: ConstrainedBox(
+                                constraints: BoxConstraints(
+                                  minWidth: MediaQuery.of(context).size.width,
+                                ),
+                                child: OrdersTabWidget(),
+                              ),
                             ),
                           ),
                           Spacer(),
