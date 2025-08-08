@@ -55,7 +55,7 @@ class OrdersTabWidget extends StatelessWidget {
             DataCell(Text('Excellent', style: Theme.of(context).textTheme.labelSmall)),
             DataCell(Text('John Doe', style: Theme.of(context).textTheme.labelSmall)),
             DataCell(Text('MTN Mobile Money', style: Theme.of(context).textTheme.labelSmall)),
-            DataCell(Text('Paid', style: Theme.of(context).textTheme.labelSmall)),
+            DataCell(_buildOrderStatus('Paid', context)),
             DataCell(Text('\$1299', style: Theme.of(context).textTheme.labelSmall)),
             DataCell(Text('1', style: Theme.of(context).textTheme.labelSmall)),
             DataCell(_buildStockStatus('Delivered', context)),
@@ -78,7 +78,7 @@ class OrdersTabWidget extends StatelessWidget {
             DataCell(Text('Good', style: Theme.of(context).textTheme.labelSmall)),
             DataCell(Text('Jane Smith', style: Theme.of(context).textTheme.labelSmall)),
             DataCell(Text('Orange Money', style: Theme.of(context).textTheme.labelSmall)),
-            DataCell(Text('Pending', style: Theme.of(context).textTheme.labelSmall)),
+            DataCell(_buildOrderStatus('Pending', context)),
             DataCell(Text('\$599', style: Theme.of(context).textTheme.labelSmall)),
             DataCell(Text('2', style: Theme.of(context).textTheme.labelSmall)),
             DataCell(_buildStockStatus('Processing', context)),
@@ -101,7 +101,7 @@ class OrdersTabWidget extends StatelessWidget {
             DataCell(Text('Excellent', style: Theme.of(context).textTheme.labelSmall)),
             DataCell(Text('Samuel Johnson', style: Theme.of(context).textTheme.labelSmall)),
             DataCell(Text('Bank Transfer', style: Theme.of(context).textTheme.labelSmall)),
-            DataCell(Text('Paid', style: Theme.of(context).textTheme.labelSmall)),
+            DataCell(_buildOrderStatus('Paid', context)),
             DataCell(Text('\$2499', style: Theme.of(context).textTheme.labelSmall)),
             DataCell(Text('1', style: Theme.of(context).textTheme.labelSmall)),
             DataCell(_buildStockStatus('Shipped', context)),
@@ -124,7 +124,7 @@ class OrdersTabWidget extends StatelessWidget {
             DataCell(Text('Average', style: Theme.of(context).textTheme.labelSmall)),
             DataCell(Text('Amina Bello', style: Theme.of(context).textTheme.labelSmall)),
             DataCell(Text('Cash on Delivery', style: Theme.of(context).textTheme.labelSmall)),
-            DataCell(Text('Unpaid', style: Theme.of(context).textTheme.labelSmall)),
+            DataCell(_buildOrderStatus('Unpaid', context)),
             DataCell(Text('\$299', style: Theme.of(context).textTheme.labelSmall)),
             DataCell(Text('3', style: Theme.of(context).textTheme.labelSmall)),
             DataCell(_buildStockStatus('Cancelled', context)),
@@ -178,20 +178,20 @@ class OrdersTabWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildOrderStatus(String status, BuildContext context) {
+  Widget _buildOrderStatus(String Orderstatus, BuildContext context) {
     Color bgColor;
     Color textColor;
 
-    switch (status.toLowerCase()) {
-      case 'Paid':
+    switch (Orderstatus.toLowerCase()) {
+      case 'paid':
         bgColor = Colors.green[100]!;
         textColor = Colors.green[800]!;
         break;
-      case 'Pending':
+      case 'pending':
         bgColor = Colors.orange[100]!;
         textColor = Colors.orange[800]!;
         break;
-      case 'Unpaid':
+      case 'unpaid':
         bgColor = Colors.red[100]!;
         textColor = Colors.red[800]!;
         break;
@@ -207,7 +207,7 @@ class OrdersTabWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(5),
       ),
       child: Text(
-        status,
+        Orderstatus,
         style: Theme.of(context).textTheme.labelSmall?.copyWith(
               color: textColor,
               fontWeight: FontWeight.bold,

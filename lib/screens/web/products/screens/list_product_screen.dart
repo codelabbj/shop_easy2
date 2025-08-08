@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:shop_easy3/screens/web/products/widgets/product_table_widget.dart';
 import 'package:shop_easy3/screens/web/widgets/app_bar_widget.dart';
 
+import '../../widgets/card_list_widget.dart';
+
 class ListProductScreen extends StatefulWidget {
   const ListProductScreen({super.key});
 
@@ -42,169 +44,81 @@ class _ListProductScreenState extends State<ListProductScreen> {
                     height: 30,
                   ),
                   Expanded(
-                    child: Container(
-                      padding: EdgeInsets.all(15),
-                      margin: EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 20),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withValues(alpha: 0.2),
-                            spreadRadius: 10,
-                            blurRadius: 10,
-                            offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
+                    child: CardListWidget(
+                      title: "Product List",
+                      subtitle: "Tracks stocks levels.",
+                      actions: [
+                        Container(
+                          padding: EdgeInsets.all(5),
+                          decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
+                          child: Row(
                             children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Product List",
-                                    style: Theme.of(context).textTheme.displayMedium!.copyWith(fontWeight: FontWeight.bold),
-                                  ),
-                                  Text(
-                                    "Tracks stocks levels",
-                                    style: Theme.of(context).textTheme.displaySmall!.copyWith(color: Colors.grey[300]),
-                                  ),
-                                ],
+                              Icon(
+                                Icons.add,
+                                size: 18,
                               ),
-                              Spacer(),
-                              Container(
-                                padding: EdgeInsets.all(5),
-                                decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
-                                child: Row(
-                                  children: [
-                                    Icon(
-                                      Icons.add,
-                                      size: 18,
-                                    ),
-                                    Text(
-                                      "Add Product",
-                                      style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Container(
-                                padding: EdgeInsets.all(5),
-                                decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
-                                child: Row(
-                                  children: [
-                                    Image.asset(
-                                      "assets/images/filtre.png",
-                                      width: 18,
-                                      height: 18,
-                                      color: Colors.black,
-                                    ),
-                                    Text(
-                                      "Filter",
-                                      style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Container(
-                                padding: EdgeInsets.all(5),
-                                decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
-                                child: Icon(Icons.picture_in_picture_alt_outlined, size: 18, color: Colors.black),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Container(
-                                padding: EdgeInsets.all(5),
-                                decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
-                                child: Row(
-                                  children: [
-                                    Icon(Icons.grid_view, size: 18, color: Colors.grey),
-                                    Icon(
-                                      Icons.table_rows_outlined,
-                                      size: 18,
-                                      color: Colors.grey,
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-                          SizedBox(height: 12),
-                          Expanded(flex: 9, child: SingleChildScrollView(scrollDirection: Axis.horizontal, child: ProductTableWidget())),
-                          Spacer(),
-                          Row(
-                            children: [
-                              Container(
-                                padding: EdgeInsets.all(5),
-                                decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
-                                child: Row(
-                                  children: [
-                                    Text(
-                                      "Show: 2",
-                                      style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold),
-                                    ),
-                                    Icon(
-                                      Icons.swap_vert,
-                                      size: 18,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Spacer(),
-                              Container(
-                                padding: EdgeInsets.all(5),
-                                decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
-                                child: Icon(
-                                  Icons.arrow_back,
-                                  size: 18,
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Container(
-                                padding: EdgeInsets.all(5),
-                                decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
-                                child: Icon(
-                                  Icons.more_horiz_outlined,
-                                  size: 18,
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Container(
-                                  padding: EdgeInsets.all(5),
-                                  decoration: BoxDecoration(color: Colors.black, borderRadius: BorderRadius.circular(5)),
-                                  child: Text(
-                                    "12",
-                                    style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold, color: Colors.white),
-                                  )),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Container(
-                                padding: EdgeInsets.all(5),
-                                decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
-                                child: Icon(
-                                  Icons.arrow_forward,
-                                  size: 18,
-                                ),
+                              Text(
+                                "Add Product",
+                                style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold),
                               ),
                             ],
                           ),
-                        ],
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Container(
+                          padding: EdgeInsets.all(5),
+                          decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                "assets/images/filtre.png",
+                                width: 18,
+                                height: 18,
+                                color: Colors.black,
+                              ),
+                              Text(
+                                "Filter",
+                                style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Container(
+                          padding: EdgeInsets.all(5),
+                          decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
+                          child: Icon(Icons.picture_in_picture_alt_outlined, size: 18, color: Colors.black),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Container(
+                          padding: EdgeInsets.all(5),
+                          decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
+                          child: Row(
+                            children: [
+                              Icon(Icons.grid_view, size: 18, color: Colors.grey),
+                              Icon(
+                                Icons.table_rows_outlined,
+                                size: 18,
+                                color: Colors.grey,
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: ConstrainedBox(
+                          constraints: BoxConstraints(
+                            minWidth: MediaQuery.of(context).size.width,
+                          ),
+                          child: ProductTableWidget(),
+                        ),
                       ),
                     ),
                   ),
