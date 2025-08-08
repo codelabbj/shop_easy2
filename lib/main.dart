@@ -8,6 +8,7 @@ import 'package:shop_easy3/screens/mobile/utils/theme/app_theme_light.dart';
 import 'package:shop_easy3/screens/web/authentification_/login_screen.dart';
 import 'package:shop_easy3/screens/web/authentification_/register_screen.dart';
 import 'package:shop_easy3/screens/web/orders/screens/list_orders_screen.dart';
+import 'package:shop_easy3/screens/web/products/screens/list_grid_product_screen.dart';
 
 import 'package:shop_easy3/screens/web/products/screens/list_product_screen.dart';
 import 'package:shop_easy3/screens/web/statistiques/screen/statistiques_screen.dart';
@@ -153,7 +154,7 @@ class MyApp extends StatelessWidget {
                 ),
               ),
             ),
-            home: ListProductScreen(),
+            home: ListGridProductScreen(),
           );
         }));
   }
