@@ -178,6 +178,44 @@ class OrdersTabWidget extends StatelessWidget {
     );
   }
 
+  Widget _buildOrderStatus(String status, BuildContext context) {
+    Color bgColor;
+    Color textColor;
+
+    switch (status.toLowerCase()) {
+      case 'Paid':
+        bgColor = Colors.green[100]!;
+        textColor = Colors.green[800]!;
+        break;
+      case 'Pending':
+        bgColor = Colors.orange[100]!;
+        textColor = Colors.orange[800]!;
+        break;
+      case 'Unpaid':
+        bgColor = Colors.red[100]!;
+        textColor = Colors.red[800]!;
+        break;
+      default:
+        bgColor = Colors.grey[300]!;
+        textColor = Colors.black87;
+    }
+
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      decoration: BoxDecoration(
+        color: bgColor,
+        borderRadius: BorderRadius.circular(5),
+      ),
+      child: Text(
+        status,
+        style: Theme.of(context).textTheme.labelSmall?.copyWith(
+              color: textColor,
+              fontWeight: FontWeight.bold,
+            ),
+      ),
+    );
+  }
+
   // Widget helper pour les boutons d’action
   static DataCell _buildActionButtons() {
     return DataCell(
@@ -185,7 +223,7 @@ class OrdersTabWidget extends StatelessWidget {
         children: [
           IconButton(
             icon: Image.asset(
-              "assets/images/editer.png",
+              "assets/images/pointeur-de-localisation.png",
               width: 15,
               height: 15,
             ),
@@ -195,10 +233,10 @@ class OrdersTabWidget extends StatelessWidget {
           ),
           IconButton(
             icon: Image.asset(
-              "assets/images/supprimer.png",
+              "assets/images/plus.png",
               width: 15,
               height: 15,
-              color: Colors.red,
+              color: Colors.black,
             ),
             onPressed: () {
               // Action delete
