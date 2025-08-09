@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shop_easy3/models/order_model.dart';
+import 'package:shop_easy3/models/tracking_step_widget.dart';
 import 'package:shop_easy3/screens/web/orders/widgets/orders_tab_widget.dart';
 import 'package:shop_easy3/screens/web/orders/widgets/sales_card_widget.dart';
 

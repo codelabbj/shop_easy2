@@ -1,10 +1,58 @@
 import 'package:flutter/material.dart';
 
+import '../../../../models/order_model.dart';
+import '../../../../models/tracking_step_widget.dart';
+import '../../utils/utils.dart';
+import 'order_detail_widget.dart';
+
 class OrdersTabWidget extends StatelessWidget {
   const OrdersTabWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final sampleOrder = OrderModel(
+      id: '#SLR132128-6N',
+      formattedDate: '13 February, 2025 at 10:45 AM',
+      status: 'Paid',
+      productName: 'Apple iMac 2023',
+      productCategory: 'Laptop & PC',
+      productColor: 'Blue',
+      productStorage: '512 GB',
+      originalPrice: '1,315',
+      currentPrice: '1,299',
+      discount: '-2',
+      subtotal: '1,299',
+      shipping: '38',
+      taxes: '80',
+      total: '1,417',
+      trackingSteps: [
+        TrackingStepModel(
+          title: 'Package Confirmed',
+          date: 'Nov 16, 2024',
+          location: 'Oakwood Drive, Dallas, TX',
+          isCompleted: true,
+        ),
+        TrackingStepModel(
+          title: 'In Transit With Carrier',
+          date: 'Nov 17, 2024',
+          location: 'Maple Lane, Waco, TX',
+          isCompleted: true,
+        ),
+        TrackingStepModel(
+          title: 'Arrived At Local Depot',
+          date: 'Nov 18, 2024',
+          location: 'Banyan Street, Austin, TX',
+          isCompleted: true,
+        ),
+        TrackingStepModel(
+          title: 'In Delivery To Destination',
+          date: 'Nov 18, 2024',
+          location: 'Elm Avenue, Austin, TX',
+          status: 'Expected delivery today',
+          isCompleted: false,
+        ),
+      ],
+    );
     return Container(
       child: DataTable(
         headingRowColor: MaterialStateProperty.all(Colors.grey[300]),
@@ -59,7 +107,7 @@ class OrdersTabWidget extends StatelessWidget {
             DataCell(Text('\$1299', style: Theme.of(context).textTheme.labelSmall)),
             DataCell(Text('1', style: Theme.of(context).textTheme.labelSmall)),
             DataCell(_buildStockStatus('Delivered', context)),
-            _buildActionButtons()
+            _buildActionButtons(context, sampleOrder)
           ]),
           DataRow(cells: [
             DataCell(Transform.scale(
@@ -82,7 +130,7 @@ class OrdersTabWidget extends StatelessWidget {
             DataCell(Text('\$599', style: Theme.of(context).textTheme.labelSmall)),
             DataCell(Text('2', style: Theme.of(context).textTheme.labelSmall)),
             DataCell(_buildStockStatus('Processing', context)),
-            _buildActionButtons()
+            _buildActionButtons(context, sampleOrder)
           ]),
           DataRow(cells: [
             DataCell(Transform.scale(
@@ -105,7 +153,7 @@ class OrdersTabWidget extends StatelessWidget {
             DataCell(Text('\$2499', style: Theme.of(context).textTheme.labelSmall)),
             DataCell(Text('1', style: Theme.of(context).textTheme.labelSmall)),
             DataCell(_buildStockStatus('Shipped', context)),
-            _buildActionButtons()
+            _buildActionButtons(context, sampleOrder)
           ]),
           DataRow(cells: [
             DataCell(Transform.scale(
@@ -128,7 +176,7 @@ class OrdersTabWidget extends StatelessWidget {
             DataCell(Text('\$299', style: Theme.of(context).textTheme.labelSmall)),
             DataCell(Text('3', style: Theme.of(context).textTheme.labelSmall)),
             DataCell(_buildStockStatus('Cancelled', context)),
-            _buildActionButtons()
+            _buildActionButtons(context, sampleOrder)
           ]),
         ],
       ),
@@ -217,7 +265,7 @@ class OrdersTabWidget extends StatelessWidget {
   }
 
   // Widget helper pour les boutons d’action
-  static DataCell _buildActionButtons() {
+  static DataCell _buildActionButtons(context, OrderModel order) {
     return DataCell(
       Row(
         children: [
@@ -227,9 +275,7 @@ class OrdersTabWidget extends StatelessWidget {
               width: 15,
               height: 15,
             ),
-            onPressed: () {
-              // Action edit
-            },
+            onPressed: () => Utils.showOrderDetails(context, order),
           ),
           IconButton(
             icon: Image.asset(
