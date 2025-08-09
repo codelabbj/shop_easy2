@@ -154,7 +154,7 @@ class MyApp extends StatelessWidget {
                 ),
               ),
             ),
-            home: ListGridProductScreen(),
+            home: ListProductScreen(),
           );
         }));
   }

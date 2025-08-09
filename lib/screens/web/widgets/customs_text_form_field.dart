@@ -7,6 +7,7 @@ class CustomTextFormField extends StatelessWidget {
   final bool obscureText;
   final Widget? suffixIcon;
   final TextInputType keyboardType;
+  final bool isMultiline;
 
   const CustomTextFormField({
     Key? key,
@@ -16,10 +17,15 @@ class CustomTextFormField extends StatelessWidget {
     this.obscureText = false,
     this.suffixIcon,
     this.keyboardType = TextInputType.text,
+    this.isMultiline = false,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final border = OutlineInputBorder(
+      borderSide: BorderSide(color: Colors.grey[300]!),
+      borderRadius: BorderRadius.circular(5),
+    );
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -28,14 +34,17 @@ class CustomTextFormField extends StatelessWidget {
         TextFormField(
           controller: controller,
           obscureText: obscureText,
+          maxLines: isMultiline ? 3 : 1,
           keyboardType: keyboardType,
+          style: Theme.of(context).textTheme.labelSmall,
           decoration: InputDecoration(
             hintText: hintText,
             suffixIcon: suffixIcon,
-            border: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey[500]!),
-              borderRadius: BorderRadius.circular(5),
-            ),
+            border: border,
+            enabledBorder: border,
+            focusedBorder: border,
+            errorBorder: border,
+            focusedErrorBorder: border,
           ),
         ),
         const SizedBox(height: 16),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_easy3/screens/web/products/widgets/product_grid_widget.dart';
 
 import 'package:shop_easy3/screens/web/products/widgets/product_table_widget.dart';
 import 'package:shop_easy3/screens/web/widgets/app_bar_widget.dart';
@@ -127,7 +128,7 @@ class _ListGridProductScreenState extends State<ListGridProductScreen> {
                           itemCount: 16,
                           itemBuilder: (context, index) {
                             return ProductCard(
-                              imageUrl: "https://via.placeholder.com/150",
+                              imageUrl: "assets/images/winter_hooby.webp",
                               title: "Apple iPad (Gen 10) $index",
                               category: "Smartphone",
                               price: 499.0 + index,

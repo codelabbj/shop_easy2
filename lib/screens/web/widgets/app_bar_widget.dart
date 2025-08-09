@@ -291,9 +291,11 @@ class AppBarWidget extends StatelessWidget {
                             borderRadius: BorderRadius.circular(30), // Bord arrondi si tu veux
                           ),
                           child: TextField(
+                            textAlignVertical: TextAlignVertical.center,
                             style: Theme.of(context).textTheme.labelSmall,
                             decoration: InputDecoration(
-                              contentPadding: EdgeInsets.only(bottom: 20),
+                              isDense: true,
+
                               prefixIcon: Icon(
                                 Icons.search,
                                 size: 18,

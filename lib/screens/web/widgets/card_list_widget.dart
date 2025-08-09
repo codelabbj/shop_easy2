@@ -63,6 +63,68 @@ class CardListWidget extends StatelessWidget {
 
           // CONTENT
           Expanded(child: child),
+          const SizedBox(height: 12),
+          Row(
+            children: [
+              Container(
+                padding: EdgeInsets.all(5),
+                decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
+                child: Row(
+                  children: [
+                    Text(
+                      "Show: 2",
+                      style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold),
+                    ),
+                    Icon(
+                      Icons.swap_vert,
+                      size: 18,
+                    ),
+                  ],
+                ),
+              ),
+              Spacer(),
+              Container(
+                padding: EdgeInsets.all(5),
+                decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
+                child: Icon(
+                  Icons.arrow_back,
+                  size: 18,
+                ),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Container(
+                padding: EdgeInsets.all(5),
+                decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
+                child: Icon(
+                  Icons.more_horiz_outlined,
+                  size: 18,
+                ),
+              ),
+              SizedBox(
+                width: 10,
+              ),
+              Container(
+                  padding: EdgeInsets.all(5),
+                  decoration: BoxDecoration(color: Colors.black, borderRadius: BorderRadius.circular(5)),
+                  child: Text(
+                    "12",
+                    style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold, color: Colors.white),
+                  )),
+              SizedBox(
+                width: 10,
+              ),
+              Container(
+                padding: EdgeInsets.all(5),
+                decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
+                child: Icon(
+                  Icons.arrow_forward,
+                  size: 18,
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );

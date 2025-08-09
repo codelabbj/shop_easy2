@@ -57,7 +57,7 @@ class ProductCard extends StatelessWidget {
             aspectRatio: 1,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8),
-              child: Image.network(imageUrl, fit: BoxFit.cover),
+              child: Image.asset(imageUrl, fit: BoxFit.cover),
             ),
           ),
           const SizedBox(height: 8),
@@ -84,14 +84,13 @@ class ProductCard extends StatelessWidget {
           ),
 
           const SizedBox(height: 4),
+
           Text(
             category,
-            style: TextStyle(color: Colors.grey.shade600, fontSize: 12),
+            style: Theme.of(context).textTheme.labelSmall!.copyWith(color: Colors.grey.shade600, fontSize: 12),
           ),
 
-          const SizedBox(height: 8),
-
-          // Status + bouton "more"
+          Spacer(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
