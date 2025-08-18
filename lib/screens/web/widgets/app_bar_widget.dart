@@ -29,7 +29,8 @@ class AppBarWidget extends StatelessWidget {
                         color: Colors.grey.withValues(alpha: 0.2),
                         spreadRadius: 1,
                         blurRadius: 10,
-                        offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
+                        offset: Offset(
+                            0, 3), // Décalage horizontal et vertical de l'ombre
                       ),
                     ],
                   ),
@@ -50,7 +51,8 @@ class AppBarWidget extends StatelessWidget {
                       color: Colors.grey.withValues(alpha: 0.2),
                       spreadRadius: 1,
                       blurRadius: 10,
-                      offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
+                      offset: Offset(
+                          0, 3), // Décalage horizontal et vertical de l'ombre
                     ),
                   ],
                 ),
@@ -64,7 +66,13 @@ class AppBarWidget extends StatelessWidget {
                         height: double.infinity,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(30),
-                          color: context.read<SwitchPageCubit>().state.selectedPage == 0 ? Theme.of(context).colorScheme.primary : Colors.white,
+                          color: context
+                                      .read<SwitchPageCubit>()
+                                      .state
+                                      .selectedPage ==
+                                  0
+                              ? Theme.of(context).colorScheme.primary
+                              : Colors.white,
                         ),
                         child: InkWell(
                           onTap: () {
@@ -75,13 +83,28 @@ class AppBarWidget extends StatelessWidget {
                             children: [
                               Icon(
                                 Icons.dashboard_outlined,
-                                color: context.read<SwitchPageCubit>().state.selectedPage == 0 ? Colors.white : Colors.grey.withValues(alpha: 0.2),
+                                color: context
+                                            .read<SwitchPageCubit>()
+                                            .state
+                                            .selectedPage ==
+                                        0
+                                    ? Colors.white
+                                    : Colors.grey.withValues(alpha: 0.2),
                               ),
                               SizedBox(width: 5),
                               Text(
                                 'Dashboard',
-                                style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                                      color: context.read<SwitchPageCubit>().state.selectedPage == 0 ? Colors.white : Colors.black,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .displayMedium
+                                    ?.copyWith(
+                                      color: context
+                                                  .read<SwitchPageCubit>()
+                                                  .state
+                                                  .selectedPage ==
+                                              0
+                                          ? Colors.white
+                                          : Colors.black,
                                     ),
                               ),
                             ],
@@ -95,18 +118,26 @@ class AppBarWidget extends StatelessWidget {
                         height: double.infinity,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(30),
-                          color: context.read<SwitchPageCubit>().state.selectedPage == 1 ? Theme.of(context).colorScheme.primary : Colors.white,
+                          color: context
+                                      .read<SwitchPageCubit>()
+                                      .state
+                                      .selectedPage ==
+                                  1
+                              ? Theme.of(context).colorScheme.primary
+                              : Colors.white,
                         ),
                         child: TextButton(
                           onPressed: () {
                             context.read<SwitchPageCubit>().switchPage(1);
-                            context.go("/document/list-product");
+                            context.go("products");
                           },
                           style: ButtonStyle(
-                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                            overlayColor:
+                                MaterialStateProperty.resolveWith<Color?>(
                               (Set<MaterialState> states) {
                                 if (states.contains(MaterialState.hovered)) {
-                                  return Colors.transparent; // Pas d'effet au survol
+                                  return Colors
+                                      .transparent; // Pas d'effet au survol
                                 }
                                 return null; // Laisser les autres états par défaut
                               },
@@ -116,13 +147,28 @@ class AppBarWidget extends StatelessWidget {
                             children: [
                               Icon(
                                 Icons.inbox,
-                                color: context.read<SwitchPageCubit>().state.selectedPage == 1 ? Colors.white : Colors.grey.withValues(alpha: 0.2),
+                                color: context
+                                            .read<SwitchPageCubit>()
+                                            .state
+                                            .selectedPage ==
+                                        1
+                                    ? Colors.white
+                                    : Colors.grey.withValues(alpha: 0.2),
                               ),
                               SizedBox(width: 5),
                               Text(
                                 'Products',
-                                style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                                      color: context.read<SwitchPageCubit>().state.selectedPage == 1 ? Colors.white : Colors.black,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .displayMedium
+                                    ?.copyWith(
+                                      color: context
+                                                  .read<SwitchPageCubit>()
+                                                  .state
+                                                  .selectedPage ==
+                                              1
+                                          ? Colors.white
+                                          : Colors.black,
                                     ),
                               ),
                             ],
@@ -136,7 +182,13 @@ class AppBarWidget extends StatelessWidget {
                         height: double.infinity,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(30),
-                          color: context.read<SwitchPageCubit>().state.selectedPage == 2 ? Theme.of(context).colorScheme.primary : Colors.white,
+                          color: context
+                                      .read<SwitchPageCubit>()
+                                      .state
+                                      .selectedPage ==
+                                  2
+                              ? Theme.of(context).colorScheme.primary
+                              : Colors.white,
                         ),
                         child: TextButton(
                           onPressed: () {
@@ -144,10 +196,12 @@ class AppBarWidget extends StatelessWidget {
                             context.go('/orders');
                           },
                           style: ButtonStyle(
-                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                            overlayColor:
+                                MaterialStateProperty.resolveWith<Color?>(
                               (Set<MaterialState> states) {
                                 if (states.contains(MaterialState.hovered)) {
-                                  return Colors.transparent; // Pas d'effet au survol
+                                  return Colors
+                                      .transparent; // Pas d'effet au survol
                                 }
                                 return null; // Laisser les autres états par défaut
                               },
@@ -157,13 +211,28 @@ class AppBarWidget extends StatelessWidget {
                             children: [
                               Icon(
                                 Icons.shopping_bag_outlined,
-                                color: context.read<SwitchPageCubit>().state.selectedPage == 2 ? Colors.white : Colors.grey.withValues(alpha: 0.2),
+                                color: context
+                                            .read<SwitchPageCubit>()
+                                            .state
+                                            .selectedPage ==
+                                        2
+                                    ? Colors.white
+                                    : Colors.grey.withValues(alpha: 0.2),
                               ),
                               SizedBox(width: 5),
                               Text(
                                 'Orders',
-                                style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                                      color: context.read<SwitchPageCubit>().state.selectedPage == 2 ? Colors.white : Colors.black,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .displayMedium
+                                    ?.copyWith(
+                                      color: context
+                                                  .read<SwitchPageCubit>()
+                                                  .state
+                                                  .selectedPage ==
+                                              2
+                                          ? Colors.white
+                                          : Colors.black,
                                     ),
                               ),
                             ],
@@ -177,7 +246,13 @@ class AppBarWidget extends StatelessWidget {
                         height: double.infinity,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(30),
-                          color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.white,
+                          color: context
+                                      .read<SwitchPageCubit>()
+                                      .state
+                                      .selectedPage ==
+                                  3
+                              ? Theme.of(context).colorScheme.primary
+                              : Colors.white,
                         ),
                         child: TextButton(
                           onPressed: () {
@@ -185,10 +260,12 @@ class AppBarWidget extends StatelessWidget {
                             context.go('/dashboard');
                           },
                           style: ButtonStyle(
-                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                            overlayColor:
+                                MaterialStateProperty.resolveWith<Color?>(
                               (Set<MaterialState> states) {
                                 if (states.contains(MaterialState.hovered)) {
-                                  return Colors.transparent; // Pas d'effet au survol
+                                  return Colors
+                                      .transparent; // Pas d'effet au survol
                                 }
                                 return null; // Laisser les autres états par défaut
                               },
@@ -198,7 +275,13 @@ class AppBarWidget extends StatelessWidget {
                             children: [
                               Icon(
                                 Icons.campaign_outlined,
-                                color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey.withValues(alpha: 0.2),
+                                color: context
+                                            .read<SwitchPageCubit>()
+                                            .state
+                                            .selectedPage ==
+                                        3
+                                    ? Colors.white
+                                    : Colors.grey.withValues(alpha: 0.2),
                               ),
                               SizedBox(width: 5),
                               Expanded(
@@ -206,8 +289,17 @@ class AppBarWidget extends StatelessWidget {
                                   height: 20,
                                   child: Text(
                                     'Marketing',
-                                    style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                                          color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.black,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .displayMedium
+                                        ?.copyWith(
+                                          color: context
+                                                      .read<SwitchPageCubit>()
+                                                      .state
+                                                      .selectedPage ==
+                                                  3
+                                              ? Colors.white
+                                              : Colors.black,
                                         ),
                                   ),
                                 ),
@@ -223,7 +315,13 @@ class AppBarWidget extends StatelessWidget {
                         height: double.infinity,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(30),
-                          color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Theme.of(context).colorScheme.primary : Colors.white,
+                          color: context
+                                      .read<SwitchPageCubit>()
+                                      .state
+                                      .selectedPage ==
+                                  4
+                              ? Theme.of(context).colorScheme.primary
+                              : Colors.white,
                         ),
                         child: TextButton(
                           onPressed: () {
@@ -231,10 +329,12 @@ class AppBarWidget extends StatelessWidget {
                             context.go('/dashboard');
                           },
                           style: ButtonStyle(
-                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                            overlayColor:
+                                MaterialStateProperty.resolveWith<Color?>(
                               (Set<MaterialState> states) {
                                 if (states.contains(MaterialState.hovered)) {
-                                  return Colors.transparent; // Pas d'effet au survol
+                                  return Colors
+                                      .transparent; // Pas d'effet au survol
                                 }
                                 return null;
                               },
@@ -244,13 +344,28 @@ class AppBarWidget extends StatelessWidget {
                             children: [
                               Icon(
                                 Icons.pie_chart_outline_outlined,
-                                color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey.withValues(alpha: 0.2),
+                                color: context
+                                            .read<SwitchPageCubit>()
+                                            .state
+                                            .selectedPage ==
+                                        4
+                                    ? Colors.white
+                                    : Colors.grey.withValues(alpha: 0.2),
                               ),
                               SizedBox(width: 5),
                               Text(
                                 'Analytics',
-                                style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                                      color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.black,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .displayMedium
+                                    ?.copyWith(
+                                      color: context
+                                                  .read<SwitchPageCubit>()
+                                                  .state
+                                                  .selectedPage ==
+                                              4
+                                          ? Colors.white
+                                          : Colors.black,
                                     ),
                               ),
                             ],
@@ -276,7 +391,8 @@ class AppBarWidget extends StatelessWidget {
                         color: Colors.grey.withValues(alpha: 0.2),
                         spreadRadius: 1,
                         blurRadius: 10,
-                        offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
+                        offset: Offset(
+                            0, 3), // Décalage horizontal et vertical de l'ombre
                       ),
                     ],
                   ),
@@ -285,10 +401,12 @@ class AppBarWidget extends StatelessWidget {
                       Expanded(
                         flex: 2,
                         child: Container(
-                          padding: EdgeInsets.symmetric(horizontal: 15), // Padding à gauche et à droite
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 15), // Padding à gauche et à droite
                           decoration: BoxDecoration(
                             color: Colors.grey[200], // Fond gris clair
-                            borderRadius: BorderRadius.circular(30), // Bord arrondi si tu veux
+                            borderRadius: BorderRadius.circular(
+                                30), // Bord arrondi si tu veux
                           ),
                           child: TextField(
                             textAlignVertical: TextAlignVertical.center,
@@ -312,7 +430,8 @@ class AppBarWidget extends StatelessWidget {
                       Container(
                         width: 30,
                         alignment: Alignment.center,
-                        decoration: BoxDecoration(color: Colors.grey[200], shape: BoxShape.circle),
+                        decoration: BoxDecoration(
+                            color: Colors.grey[200], shape: BoxShape.circle),
                         child: Icon(
                           Icons.help_outline_outlined,
                           color: Colors.black54,
@@ -325,7 +444,8 @@ class AppBarWidget extends StatelessWidget {
                       Container(
                         width: 30,
                         alignment: Alignment.center,
-                        decoration: BoxDecoration(color: Colors.grey[200], shape: BoxShape.circle),
+                        decoration: BoxDecoration(
+                            color: Colors.grey[200], shape: BoxShape.circle),
                         child: Icon(
                           Icons.settings_outlined,
                           color: Colors.black54,
@@ -338,7 +458,8 @@ class AppBarWidget extends StatelessWidget {
                       Container(
                         width: 30,
                         alignment: Alignment.center,
-                        decoration: BoxDecoration(color: Colors.grey[200], shape: BoxShape.circle),
+                        decoration: BoxDecoration(
+                            color: Colors.grey[200], shape: BoxShape.circle),
                         child: Icon(
                           Icons.person_2_outlined,
                           color: Colors.black54,

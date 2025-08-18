@@ -30,7 +30,7 @@ final GoRouter _router = GoRouter(
   initialLocation: '/',
   routes: [
     GoRoute(
-      path: '/login',
+      path: '/',
       builder: (BuildContext context, GoRouterState state) {
         return const LoginScreen();
       },
@@ -45,7 +45,9 @@ final GoRouter _router = GoRouter(
     GoRoute(
       path: '/products',
       builder: (BuildContext context, GoRouterState state) {
-        context.read<SwitchPageCubit>().switchPage(1); // Sélectionner la page Liste des documents
+        context
+            .read<SwitchPageCubit>()
+            .switchPage(1); // Sélectionner la page Liste des documents
         return ListProductScreen();
       },
     ),
@@ -59,7 +61,9 @@ final GoRouter _router = GoRouter(
     GoRoute(
       path: '/orders',
       builder: (BuildContext context, GoRouterState state) {
-        context.read<SwitchPageCubit>().switchPage(2); // Sélectionner la page Collaborateurs
+        context
+            .read<SwitchPageCubit>()
+            .switchPage(2); // Sélectionner la page Collaborateurs
         return ListOrdersScreen();
       },
     ),
@@ -116,10 +120,10 @@ class MyApp extends StatelessWidget {
         ],
         child: Builder(builder: (context) {
           WidgetsBinding.instance.addPostFrameCallback((_) {});
-          return MaterialApp(
+          return MaterialApp.router(
             debugShowCheckedModeBanner: false,
             title: 'Flutter Demo',
-            // routerConfig: _router,
+            routerConfig: _router,
             theme: ThemeData().copyWith(
               appBarTheme: const AppBarTheme(
                 backgroundColor: Color(0xFFFCFCFC),
