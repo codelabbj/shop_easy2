@@ -100,7 +100,7 @@ class AppBarWidget extends StatelessWidget {
                         child: TextButton(
                           onPressed: () {
                             context.read<SwitchPageCubit>().switchPage(1);
-                            context.go('/dashboard');
+                            context.go("/document/list-product");
                           },
                           style: ButtonStyle(
                             overlayColor: MaterialStateProperty.resolveWith<Color?>(
@@ -141,7 +141,7 @@ class AppBarWidget extends StatelessWidget {
                         child: TextButton(
                           onPressed: () {
                             context.read<SwitchPageCubit>().switchPage(2);
-                            context.go('/dashboard');
+                            context.go('/orders');
                           },
                           style: ButtonStyle(
                             overlayColor: MaterialStateProperty.resolveWith<Color?>(
@@ -236,7 +236,7 @@ class AppBarWidget extends StatelessWidget {
                                 if (states.contains(MaterialState.hovered)) {
                                   return Colors.transparent; // Pas d'effet au survol
                                 }
-                                return null; // Laisser les autres états par défaut
+                                return null;
                               },
                             ),
                           ),

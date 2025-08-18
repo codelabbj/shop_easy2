@@ -12,10 +12,13 @@ import 'package:shop_easy3/screens/web/products/screens/list_grid_product_screen
 
 import 'package:shop_easy3/screens/web/products/screens/list_product_screen.dart';
 import 'package:shop_easy3/screens/web/statistiques/screen/statistiques_screen.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 import 'cubits/switch_page/switch_page_cubit.dart';
 
-void main() {
+void main() async {
+  // await SharedPreferencesUtils.init();
+  setPathUrlStrategy();
   runApp(const MyApp());
 }
 
@@ -26,26 +29,26 @@ var kColorScheme = ColorScheme.fromSeed(
 final GoRouter _router = GoRouter(
   initialLocation: '/',
   routes: [
-    // GoRoute(
-    //   path: '/login',
-    //   builder: (BuildContext context, GoRouterState state) {
-    //     return const LoginPage();
-    //   },
-    // ),
-    // GoRoute(
-    //   path: '/dashboard',
-    //   builder: (BuildContext context, GoRouterState state) {
-    //     context.read<SwitchPageCubit>().switchPage(0);
-    //     return const StatistiquesScreen();
-    //   },
-    // ),
-    // GoRoute(
-    //   path: '/document/List_document',
-    //   builder: (BuildContext context, GoRouterState state) {
-    //     context.read<SwitchPageCubit>().switchPage(1); // Sélectionner la page Liste des documents
-    //     return ListDocumentScreen();
-    //   },
-    // ),
+    GoRoute(
+      path: '/login',
+      builder: (BuildContext context, GoRouterState state) {
+        return const LoginScreen();
+      },
+    ),
+    GoRoute(
+      path: '/dashboard',
+      builder: (BuildContext context, GoRouterState state) {
+        context.read<SwitchPageCubit>().switchPage(0);
+        return const StatistiquesScreen();
+      },
+    ),
+    GoRoute(
+      path: '/products',
+      builder: (BuildContext context, GoRouterState state) {
+        context.read<SwitchPageCubit>().switchPage(1); // Sélectionner la page Liste des documents
+        return ListProductScreen();
+      },
+    ),
     // GoRoute(
     //   path: '/document/nouveau_document',
     //   builder: (BuildContext context, GoRouterState state) {
@@ -53,13 +56,13 @@ final GoRouter _router = GoRouter(
     //     return const NewDocumentScreen();
     //   },
     // ),
-    // GoRoute(
-    //   path: '/historiques',
-    //   builder: (BuildContext context, GoRouterState state) {
-    //     context.read<SwitchPageCubit>().switchPage(3); // Sélectionner la page Collaborateurs
-    //     return DashboardHomeScreen(widget: const HistoryScreen());
-    //   },
-    // ),
+    GoRoute(
+      path: '/orders',
+      builder: (BuildContext context, GoRouterState state) {
+        context.read<SwitchPageCubit>().switchPage(2); // Sélectionner la page Collaborateurs
+        return ListOrdersScreen();
+      },
+    ),
     // GoRoute(
     //   path: '/collaborateur/List_collaborateurs',
     //   builder: (BuildContext context, GoRouterState state) {
@@ -154,7 +157,6 @@ class MyApp extends StatelessWidget {
                 ),
               ),
             ),
-            home: ListOrdersScreen(),
           );
         }));
   }

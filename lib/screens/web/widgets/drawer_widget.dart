@@ -37,11 +37,10 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
       builder: (context, state) => Container(
         width: Const.screenWidth(context) * 0.2,
         height: Const.screenHeight(context),
-        color: Colors.white,
+        color: Colors.grey[200],
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Marketing'),
             Container(
               padding: EdgeInsets.symmetric(vertical: 10),
               width: Const.screenWidth(context) * 0.19,
@@ -66,8 +65,8 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
                 ),
                 child: Row(
                   children: [
-                    Icon(
-                      Icons.bar_chart,
+                    Image.asset(
+                      "assets/images/menu.png",
                       color: context.read<SwitchPageCubit>().state.selectedPage == 0 ? Colors.white : Colors.grey.withValues(alpha: 0.2),
                     ),
                     SizedBox(width: 5),
@@ -105,8 +104,8 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
                 ),
                 child: Row(
                   children: [
-                    Icon(
-                      Icons.shopping_basket,
+                    Image.asset(
+                      "assets/images/product.png",
                       color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey.withValues(alpha: 0.2),
                     ),
                     SizedBox(width: 5),
@@ -126,7 +125,6 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
             SizedBox(
               height: 50,
             ),
-            Text('Sytems'),
             Container(
               padding: EdgeInsets.symmetric(vertical: 10),
               width: Const.screenWidth(context) * 0.19,
@@ -151,15 +149,15 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
                 ),
                 child: Row(
                   children: [
-                    Icon(
-                      Icons.settings,
+                    Image.asset(
+                      "assets/images/business-and-finance.png",
                       color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey.withValues(alpha: 0.2),
                     ),
                     SizedBox(width: 5),
                     SizedBox(
                       width: Const.screenWidth(context) * 0.1,
                       child: Text(
-                        'Settings',
+                        'Income',
                         style: Theme.of(context).textTheme.displayMedium?.copyWith(
                               color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.black,
                             ),
@@ -174,15 +172,37 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
               height: 35,
               child: Row(
                 children: [
-                  Icon(
-                    Icons.dark_mode,
+                  Image.asset(
+                    "assets/images/checkout.png",
                     color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey.withValues(alpha: 0.2),
                   ),
                   SizedBox(width: 5),
                   SizedBox(
                     width: Const.screenWidth(context) * 0.1,
                     child: Text(
-                      'Dark mode',
+                      'Orders',
+                      style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                            color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.black,
+                          ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              width: Const.screenWidth(context) * 0.19,
+              height: 35,
+              child: Row(
+                children: [
+                  Image.asset(
+                    "assets/images/promotion.png",
+                    color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey.withValues(alpha: 0.2),
+                  ),
+                  SizedBox(width: 5),
+                  SizedBox(
+                    width: Const.screenWidth(context) * 0.1,
+                    child: Text(
+                      'Promote',
                       style: Theme.of(context).textTheme.displayMedium?.copyWith(
                             color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.black,
                           ),
