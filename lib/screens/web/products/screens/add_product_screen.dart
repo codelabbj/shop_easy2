@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:shop_easy3/screens/web/products/screens/add_product_image_screen.dart';
+import 'package:shop_easy3/screens/web/products/screens/add_product_info_screen.dart';
 
 import 'package:shop_easy3/screens/web/widgets/app_bar_widget.dart';
-
-import '../../statistiques/widgets/add_products_widget.dart';
 
 class AddProductScreen extends StatefulWidget {
   const AddProductScreen({super.key});
@@ -82,24 +82,10 @@ class _AddProductScreenState extends State<AddProductScreen> {
                   Expanded(
                       child: Row(
                     children: [
-                      Expanded(flex: 2, child: AddProductsWidget()),
+                      Expanded(flex: 2, child: AddProductImageScreen()),
                       Flexible(
                         flex: 3,
-                        child: Container(
-                          margin: EdgeInsets.only(left: 10, right: 10, top: 10),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withValues(alpha: 0.2),
-                                spreadRadius: 10,
-                                blurRadius: 10,
-                                offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                              ),
-                            ],
-                          ),
-                        ),
+                        child: AddProductInfo(),
                       )
                     ],
                   ))

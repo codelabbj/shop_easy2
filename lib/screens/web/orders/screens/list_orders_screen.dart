@@ -46,10 +46,24 @@ class _ListOrdersScreenState extends State<ListOrdersScreen> {
                       ),
                       Expanded(
                         child: SalesCardWidget(
-                          title: 'Total Sales',
-                          subtitle: 'Total earnings from sales.',
-                          amount: '\$189,374',
-                          percentage: '9%',
+                          title: 'Total Transactions',
+                          subtitle: 'Total transactions ordered products',
+                          amount: '34',
+                          percentage: '2%',
+                          isPositive: false,
+                          footerText: 'From last month',
+                          onDetailTap: () {
+                            // action on detail click
+                            print("Details tapped!");
+                          },
+                        ),
+                      ),
+                      Expanded(
+                        child: SalesCardWidget(
+                          title: 'Orders disputes',
+                          subtitle: 'Total disputes ordered products',
+                          amount: '70',
+                          percentage: '5%',
                           isPositive: true,
                           footerText: 'From last month',
                           onDetailTap: () {
@@ -60,25 +74,11 @@ class _ListOrdersScreenState extends State<ListOrdersScreen> {
                       ),
                       Expanded(
                         child: SalesCardWidget(
-                          title: 'Total Sales',
-                          subtitle: 'Total earnings from sales.',
+                          title: 'Order Refund',
+                          subtitle: 'Total refunds ordered products.',
                           amount: '\$189,374',
-                          percentage: '9%',
-                          isPositive: true,
-                          footerText: 'From last month',
-                          onDetailTap: () {
-                            // action on detail click
-                            print("Details tapped!");
-                          },
-                        ),
-                      ),
-                      Expanded(
-                        child: SalesCardWidget(
-                          title: 'Total Sales',
-                          subtitle: 'Total earnings from sales.',
-                          amount: '\$189,374',
-                          percentage: '9%',
-                          isPositive: true,
+                          percentage: '11%',
+                          isPositive: false,
                           footerText: 'From last month',
                           onDetailTap: () {
                             // action on detail click
@@ -91,14 +91,11 @@ class _ListOrdersScreenState extends State<ListOrdersScreen> {
                   Expanded(
                     child: CardListWidget(
                       title: "Orders List",
-                      subtitle:
-                          "Track stock levels, availability, and restocking needs in real time.",
+                      subtitle: "Track stock levels, availability, and restocking needs in real time.",
                       actions: [
                         Container(
                           padding: EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey[200]!),
-                              borderRadius: BorderRadius.circular(5)),
+                          decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
                           child: Row(
                             children: [
                               Image.asset(
@@ -109,10 +106,7 @@ class _ListOrdersScreenState extends State<ListOrdersScreen> {
                               ),
                               Text(
                                 "Filter",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .displaySmall!
-                                    .copyWith(fontWeight: FontWeight.bold),
+                                style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold),
                               ),
                             ],
                           ),
@@ -122,9 +116,7 @@ class _ListOrdersScreenState extends State<ListOrdersScreen> {
                         ),
                         Container(
                           padding: EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey[200]!),
-                              borderRadius: BorderRadius.circular(5)),
+                          decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
                           child: Row(
                             children: [
                               Image.asset(
@@ -135,10 +127,7 @@ class _ListOrdersScreenState extends State<ListOrdersScreen> {
                               ),
                               Text(
                                 "Customize",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .displaySmall!
-                                    .copyWith(fontWeight: FontWeight.bold),
+                                style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold),
                               ),
                             ],
                           ),
@@ -148,9 +137,7 @@ class _ListOrdersScreenState extends State<ListOrdersScreen> {
                         ),
                         Container(
                           padding: EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey[200]!),
-                              borderRadius: BorderRadius.circular(5)),
+                          decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
                           child: Row(
                             children: [
                               Image.asset(
@@ -161,10 +148,7 @@ class _ListOrdersScreenState extends State<ListOrdersScreen> {
                               ),
                               Text(
                                 "Export",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .displaySmall!
-                                    .copyWith(fontWeight: FontWeight.bold),
+                                style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold),
                               ),
                             ],
                           ),

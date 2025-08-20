@@ -2,24 +2,21 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:shop_easy3/screens/web/products/widgets/product_grid_widget.dart';
 
 import 'package:shop_easy3/screens/web/products/widgets/product_table_widget.dart';
 import 'package:shop_easy3/screens/web/widgets/app_bar_widget.dart';
 
 import '../../widgets/card_list_widget.dart';
-import '../widgets/product_card_widget.dart';
 
-class ListGridProductScreen extends StatefulWidget {
-  const ListGridProductScreen({super.key});
+class VendorWebPanel extends StatefulWidget {
+  const VendorWebPanel({super.key});
 
   @override
-  State<ListGridProductScreen> createState() => _ListGridProductScreenState();
+  State<VendorWebPanel> createState() => _VendorWebPanelState();
 }
 
-class _ListGridProductScreenState extends State<ListGridProductScreen> {
+class _VendorWebPanelState extends State<VendorWebPanel> {
   String formList = "List-ui";
-  final List<String> statuses = ["sold_out", "low_stock", "in_stock"];
   @override
   void initState() {
     super.initState();
@@ -115,45 +112,36 @@ class _ListGridProductScreenState extends State<ListGridProductScreen> {
                         SizedBox(
                           width: 10,
                         ),
-                        Container(
-                          padding: EdgeInsets.all(5),
-                          decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
-                          child: Row(
-                            children: [
-                              Icon(Icons.grid_view, size: 18, color: Colors.grey),
-                              Icon(
-                                Icons.table_rows_outlined,
-                                size: 18,
-                                color: Colors.grey,
-                              ),
-                            ],
+                        InkWell(
+                          onTap: () {
+                            formList = "grid-product";
+                            context.go('/grid-product');
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(5),
+                            decoration: BoxDecoration(
+                                border: Border.all(color: formList == "grid-product" ? Theme.of(context).colorScheme.primary : Colors.grey[200]!),
+                                borderRadius: BorderRadius.circular(5)),
+                            child: Row(
+                              children: [
+                                Icon(Icons.grid_view, size: 18, color: Colors.grey),
+                                Icon(
+                                  Icons.table_rows_outlined,
+                                  size: 18,
+                                  color: Colors.grey,
+                                ),
+                              ],
+                            ),
                           ),
                         )
                       ],
-                      child: ConstrainedBox(
-                        constraints: BoxConstraints(
-                          minWidth: MediaQuery.of(context).size.width,
-                        ),
-                        child: GridView.builder(
-                          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                            maxCrossAxisExtent: 250,
-                            mainAxisSpacing: 10,
-                            crossAxisSpacing: 10,
-                            childAspectRatio: 0.7,
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: ConstrainedBox(
+                          constraints: BoxConstraints(
+                            minWidth: MediaQuery.of(context).size.width,
                           ),
-                          itemCount: 16,
-                          itemBuilder: (context, index) {
-                            return ProductCard(
-                              imageUrl: "assets/images/winter_hooby.webp",
-                              title: "Apple iPad (Gen 10) $index",
-                              category: "Smartphone",
-                              price: 499.0 + index,
-                              stockStatus: statuses[index % 3],
-                              onMorePressed: () {
-                                print("More options for product $index");
-                              },
-                            );
-                          },
+                          child: ProductTableWidget(),
                         ),
                       ),
                     ),

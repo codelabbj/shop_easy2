@@ -1,7 +1,19 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_easy3/screens/web/products/screens/list_product_screen.dart';
+import 'package:shop_easy3/screens/web/products/widgets/product_table_widget.dart';
+import 'package:shop_easy3/screens/web/statistiques/widgets/inventory_stock_widget.dart';
+import 'package:shop_easy3/screens/web/statistiques/widgets/store_overview_card.dart';
+import 'package:shop_easy3/screens/web/utils/app_colors.dart';
+import 'package:shop_easy3/screens/web/widgets/app_bar_widget.dart';
 
-import '../../widgets/app_bar_widget.dart';
-import '../widgets/add_products_widget.dart';
+import '../../orders/widgets/orders_tab_widget.dart';
+import '../../widgets/card_list_widget.dart';
+import '../../widgets/drawer_widget.dart';
+import '../widgets/pie_chart_widget.dart';
+import '../widgets/sales_chart_widget.dart';
+import '../widgets/stat_card_widget.dart';
+import '../widgets/top_selling_list_widget.dart';
 
 class StatistiquesScreen extends StatefulWidget {
   const StatistiquesScreen({super.key});
@@ -11,100 +23,127 @@ class StatistiquesScreen extends StatefulWidget {
 }
 
 class _StatistiquesScreenState extends State<StatistiquesScreen> {
-  late Future<Map<String, dynamic>> _statsFuture;
-
-  @override
-  void initState() {
-    super.initState();
-
-    // _checkAuthentication();
-    // context.read<CollaborateursCubit>().getCustomerDetails();
-  }
-  //
-  // void _checkAuthentication() async {
-  //   final token = SharedPreferencesUtils.getString('auth_token');
-  //   if (token == null || token.isEmpty) {
-  //     // Rediriger vers la page de login
-  //     context.go('/login'); // ou Navigator.of(context).pushReplacementNamed('/login');
-  //   }
-// }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[100],
       body: SafeArea(
-        child: Row(
+        child: Column(
           children: [
+            SizedBox(height: 60, child: AppBarWidget()),
             Expanded(
-              child: Column(
-                children: [
-                  SizedBox(height: 60, child: AppBarWidget()),
-                  Container(
-                    padding: EdgeInsets.all(15),
-                    margin: EdgeInsets.only(left: 10, right: 10, top: 10),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withValues(alpha: 0.2),
-                          spreadRadius: 10,
-                          blurRadius: 10,
-                          offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                        ),
-                      ],
-                    ),
-                    child: Row(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.all(10),
-                          padding: EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                              color: Colors.white, borderRadius: BorderRadius.circular(5), border: Border.all(color: Colors.grey[300]!)),
-                          child: Icon(Icons.arrow_back),
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Add new Product",
-                              style: Theme.of(context).textTheme.labelMedium,
-                            ),
-                            Text(
-                              "you can see all sales analysis result more completely",
-                              style: Theme.of(context).textTheme.labelMedium!.copyWith(color: Colors.grey[300]),
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                      child: Row(
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 14.0),
+                  child: Column(
                     children: [
-                      Expanded(flex: 2, child: AddProductsWidget()),
-                      Flexible(
-                        flex: 3,
-                        child: Container(
-                          margin: EdgeInsets.only(left: 10, right: 10, top: 10),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withValues(alpha: 0.2),
-                                spreadRadius: 10,
-                                blurRadius: 10,
-                                offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                              ),
-                            ],
+                      SizedBox(height: 30),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: StatCardWidget(
+                              title: "Average Order Value",
+                              value: "\$85.70",
+                              subtitle: "+150 last month",
+                              percentage: "+13.9%",
+                              isPositive: true,
+                              color: Colors.orangeAccent,
+                              imageUrl: "assets/images/panier.png",
+                            ),
                           ),
-                        ),
-                      )
+                          SizedBox(width: 12),
+                          Expanded(
+                            child: StatCardWidget(
+                              title: "Total Income",
+                              value: "\$325,890",
+                              subtitle: "+500,000 last month",
+                              percentage: "+16.1%",
+                              isPositive: true,
+                              imageUrl: "assets/images/marketplace1.png",
+                              color: Colors.green,
+                            ),
+                          ),
+                          SizedBox(width: 12),
+                          Expanded(
+                            child: StatCardWidget(
+                              title: "Total Products",
+                              value: "10",
+                              subtitle: "+2.3% last month",
+                              percentage: "+11.1%",
+                              isPositive: true,
+                              imageUrl: "assets/images/product.png",
+                              color: Colors.blue,
+                            ),
+                          ),
+                          SizedBox(width: 12),
+                          Expanded(
+                            child: StatCardWidget(
+                              title: "Total Orders",
+                              value: "23",
+                              subtitle: "+2,984 last month",
+                              percentage: "-10.5%",
+                              isPositive: false,
+                              color: AppColors.PRIMARY_BLUE_COLOR,
+                              imageUrl: "assets/images/shopping-bag.png",
+                            ),
+                          ),
+                        ],
+                      ),
+
+                      const SizedBox(height: 16),
+                      StoreOverviewCard(),
+                      const SizedBox(height: 10),
+                      // Graphique + produits top ventes
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(flex: 2, child: SalesChartWidget()),
+                          SizedBox(width: 16),
+                          Expanded(
+                            flex: 1,
+                            child: InventoryPieChart(
+                              inStock: 5,
+                              lowStock: 4,
+                              outOfStock: 2,
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 12),
+                      // Row(
+                      //   children: [
+                      //     CardListWidget(
+                      //       child: SingleChildScrollView(
+                      //         scrollDirection: Axis.horizontal,
+                      //         child: ProductTableWidget(),
+                      //       ),
+                      //     )
+                      //   ],
+                      // ),
+
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            flex: 2,
+                            child: CardListWidget(
+                              child: SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: ConstrainedBox(
+                                  constraints: BoxConstraints(
+                                    minWidth: MediaQuery.of(context).size.width,
+                                  ),
+                                  child: OrdersTabWidget(),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(flex: 1, child: InventoryStatusCard()),
+                        ],
+                      ),
                     ],
-                  ))
-                ],
+                  ),
+                ),
               ),
             ),
           ],

@@ -8,6 +8,7 @@ import 'package:shop_easy3/screens/mobile/utils/theme/app_theme_light.dart';
 import 'package:shop_easy3/screens/web/authentification_/login_screen.dart';
 import 'package:shop_easy3/screens/web/authentification_/register_screen.dart';
 import 'package:shop_easy3/screens/web/orders/screens/list_orders_screen.dart';
+import 'package:shop_easy3/screens/web/products/screens/add_product_screen.dart';
 import 'package:shop_easy3/screens/web/products/screens/list_grid_product_screen.dart';
 
 import 'package:shop_easy3/screens/web/products/screens/list_product_screen.dart';
@@ -45,35 +46,38 @@ final GoRouter _router = GoRouter(
     GoRoute(
       path: '/products',
       builder: (BuildContext context, GoRouterState state) {
-        context
-            .read<SwitchPageCubit>()
-            .switchPage(1); // Sélectionner la page Liste des documents
+        context.read<SwitchPageCubit>().switchPage(1); // Sélectionner la page Liste des documents
         return ListProductScreen();
       },
     ),
-    // GoRoute(
-    //   path: '/document/nouveau_document',
-    //   builder: (BuildContext context, GoRouterState state) {
-    //     context.read<SwitchPageCubit>().switchPage(2); // Sélectionner la page Nouveau document
-    //     return const NewDocumentScreen();
-    //   },
-    // ),
+    GoRoute(
+      path: '/add-product',
+      builder: (BuildContext context, GoRouterState state) {
+        context.read<SwitchPageCubit>().switchPage(1); // Sélectionner la page Nouveau document
+        return const AddProductScreen();
+      },
+    ),
+    GoRoute(
+      path: '/grid-product',
+      builder: (BuildContext context, GoRouterState state) {
+        context.read<SwitchPageCubit>().switchPage(1);
+        return const ListGridProductScreen();
+      },
+    ),
     GoRoute(
       path: '/orders',
       builder: (BuildContext context, GoRouterState state) {
-        context
-            .read<SwitchPageCubit>()
-            .switchPage(2); // Sélectionner la page Collaborateurs
+        context.read<SwitchPageCubit>().switchPage(2); // Sélectionner la page Collaborateurs
         return ListOrdersScreen();
       },
     ),
-    // GoRoute(
-    //   path: '/collaborateur/List_collaborateurs',
-    //   builder: (BuildContext context, GoRouterState state) {
-    //     context.read<SwitchPageCubit>().switchPage(7); // Sélectionner la page Liste des documents
-    //     return ListCollaborateurScreen();
-    //   },
-    // ),
+    GoRoute(
+      path: '/add-product',
+      builder: (BuildContext context, GoRouterState state) {
+        context.read<SwitchPageCubit>().switchPage(7); // Sélectionner la page Liste des documents
+        return AddProductScreen();
+      },
+    ),
     // GoRoute(
     //   path: '/collaborateur/nouveau_collaborateur',
     //   builder: (BuildContext context, GoRouterState state) {
