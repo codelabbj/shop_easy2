@@ -4,6 +4,9 @@ import 'package:shop_easy3/screens/web/products/screens/add_product_info_screen.
 
 import 'package:shop_easy3/screens/web/widgets/app_bar_widget.dart';
 
+import '../widgets/categorie_check_widget.dart';
+import '../widgets/product_form2_widget.dart';
+
 class AddProductScreen extends StatefulWidget {
   const AddProductScreen({super.key});
 
@@ -33,63 +36,44 @@ class _AddProductScreenState extends State<AddProductScreen> {
     return Scaffold(
       backgroundColor: Colors.grey[100],
       body: SafeArea(
-        child: Row(
+        child: Column(
           children: [
+            SizedBox(height: 60, child: AppBarWidget()),
+            // SingleChildScrollView(
+            //   child: Row(
+            //     children: [
+            //       Expanded(
+            //         flex: 2,
+            //         child: Column(
+            //           children: [AddProductInfo(), SizedBox(height: 12), ProductForm2Widget(), SizedBox(height: 12), AddProductImageScreen()],
+            //         ),
+            //       ),
+            //       // Expanded(flex: 1, child: FilterSidebar())
+            //     ],
+            //   ),
+            // )
             Expanded(
-              child: Column(
-                children: [
-                  SizedBox(height: 60, child: AppBarWidget()),
-                  Container(
-                    padding: EdgeInsets.all(15),
-                    margin: EdgeInsets.only(left: 10, right: 10, top: 10),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withValues(alpha: 0.2),
-                          spreadRadius: 10,
-                          blurRadius: 10,
-                          offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                        ),
-                      ],
-                    ),
-                    child: Row(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.all(10),
-                          padding: EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                              color: Colors.white, borderRadius: BorderRadius.circular(5), border: Border.all(color: Colors.grey[300]!)),
-                          child: Icon(Icons.arrow_back),
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Add new Product",
-                              style: Theme.of(context).textTheme.labelMedium,
-                            ),
-                            Text(
-                              "you can see all sales analysis result more completely",
-                              style: Theme.of(context).textTheme.labelMedium!.copyWith(color: Colors.grey[300]),
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                      child: Row(
-                    children: [
-                      Expanded(flex: 2, child: AddProductImageScreen()),
-                      Flexible(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.only(top: 16, left: 16),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Expanded(
                         flex: 3,
-                        child: AddProductInfo(),
-                      )
-                    ],
-                  ))
-                ],
+                        child: Column(children: [
+                          AddProductInfo(),
+                          SizedBox(height: 12),
+                          ProductForm2Widget(),
+                          SizedBox(height: 12),
+                          // AddProductImageScreen(),
+                        ])),
+
+                    Flexible(flex: 1, child: FilterSidebar()),
+                    //
+                    //
+                  ],
+                ),
               ),
             ),
           ],

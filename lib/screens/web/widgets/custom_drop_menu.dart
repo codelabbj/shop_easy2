@@ -17,7 +17,7 @@ class CustomDropdownField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final border = OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8),
+      borderRadius: BorderRadius.circular(5),
       borderSide: BorderSide(color: Colors.grey[300]!),
     );
     return Padding(

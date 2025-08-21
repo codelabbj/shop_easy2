@@ -44,13 +44,13 @@ class _AddProductInfoState extends State<AddProductInfo> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CustomTextFormField(
-            label: "Product ID",
-            hintText: "Enter product ID",
+            label: "Product Name",
+            hintText: "Enter product name ",
             controller: _idController,
           ),
           CustomTextFormField(
-            label: "Product Name",
-            hintText: "Enter product name",
+            label: "Permalink",
+            hintText: "https://easy.shopright.com/products/",
             controller: _nameController,
           ),
           CustomTextFormField(
