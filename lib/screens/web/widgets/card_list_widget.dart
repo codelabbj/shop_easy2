@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_easy3/screens/web/widgets/custom_search_widget.dart';
 
 class CardListWidget extends StatelessWidget {
   final String? title;
@@ -55,6 +56,7 @@ class CardListWidget extends StatelessWidget {
                   ],
                 ],
               ),
+              CustomSearchWidget(),
               Spacer(),
               SizedBox(
                 width: 10,

@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shop_easy3/cubits/switch_page/switch_page_state.dart';
+import 'package:shop_easy3/screens/web/widgets/hover_app_bar.dart';
 
 import '../../../constantes/const.dart';
 import '../../../cubits/switch_page/switch_page_cubit.dart';
+import 'hocer_drawer_menu.dart';
 
 class AppBarWidget extends StatelessWidget {
   const AppBarWidget({super.key});
@@ -140,6 +142,52 @@ class AppBarWidget extends StatelessWidget {
                         ),
                       ),
                     ),
+                    // Expanded(
+                    //   child: Container(
+                    //     padding: EdgeInsets.all(10),
+                    //     height: double.infinity,
+                    //     decoration: BoxDecoration(
+                    //       borderRadius: BorderRadius.circular(30),
+                    //       color: context.read<SwitchPageCubit>().state.selectedPage == 2 ? Theme.of(context).colorScheme.primary : Colors.white,
+                    //     ),
+                    //     child: TextButton(
+                    //       onPressed: () {
+                    //         context.read<SwitchPageCubit>().switchPage(2);
+                    //         context.go('/orders');
+                    //       },
+                    //       style: ButtonStyle(
+                    //         overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                    //           (Set<MaterialState> states) {
+                    //             if (states.contains(MaterialState.hovered)) {
+                    //               return Colors.transparent; // Pas d'effet au survol
+                    //             }
+                    //             return null; // Laisser les autres états par défaut
+                    //           },
+                    //         ),
+                    //       ),
+                    //       child: Row(
+                    //         children: [
+                    //           Icon(
+                    //             Icons.shopping_bag_outlined,
+                    //             color: context.read<SwitchPageCubit>().state.selectedPage == 2 ? Colors.white : Colors.grey.withValues(alpha: 0.2),
+                    //           ),
+                    //           SizedBox(width: 5),
+                    //           Expanded(
+                    //             child: SizedBox(
+                    //               height: 20,
+                    //               child: Text(
+                    //                 'Orders',
+                    //                 style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                    //                       color: context.read<SwitchPageCubit>().state.selectedPage == 2 ? Colors.white : Colors.black,
+                    //                     ),
+                    //               ),
+                    //             ),
+                    //           ),
+                    //         ],
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
                     Expanded(
                       child: Container(
                         padding: EdgeInsets.all(10),
@@ -148,21 +196,44 @@ class AppBarWidget extends StatelessWidget {
                           borderRadius: BorderRadius.circular(30),
                           color: context.read<SwitchPageCubit>().state.selectedPage == 2 ? Theme.of(context).colorScheme.primary : Colors.white,
                         ),
-                        child: TextButton(
-                          onPressed: () {
-                            context.read<SwitchPageCubit>().switchPage(2);
-                            context.go('/orders');
+                        child: PopupMenuButton<int>(
+                          tooltip: '',
+                          position: PopupMenuPosition.under,
+                          color: Colors.white,
+                          onSelected: (value) {
+                            if (value == 1) {
+                              context.read<SwitchPageCubit>().switchPage(2);
+                              context.go('/orders');
+                            } else if (value == 2) {
+                              context.read<SwitchPageCubit>().switchPage(2);
+                              context.go('/orders/returns');
+                            }
                           },
-                          style: ButtonStyle(
-                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                              (Set<MaterialState> states) {
-                                if (states.contains(MaterialState.hovered)) {
-                                  return Colors.transparent; // Pas d'effet au survol
-                                }
-                                return null; // Laisser les autres états par défaut
-                              },
+                          itemBuilder: (context) => [
+                            PopupMenuItem(
+                              value: 1,
+                              child: HoverAppBar(
+                                label: 'Orders list',
+                                imageUrl: "assets/images/shopping-bag.png",
+                                isSelected: context.read<SwitchPageCubit>().state.selectedPage == 2,
+                                onTap: () {
+                                  context.read<SwitchPageCubit>().switchPage(2);
+                                  context.go('/orders');
+                                },
+                              ),
                             ),
-                          ),
+                            PopupMenuItem(
+                              value: 2,
+                              child: HoverAppBar(
+                                label: 'Orders returns',
+                                imageUrl: "assets/images/menu.png",
+                                isSelected: context.read<SwitchPageCubit>().state.selectedPage == 4,
+                                onTap: () {
+                                  context.read<SwitchPageCubit>().switchPage(4);
+                                },
+                              ),
+                            ),
+                          ],
                           child: Row(
                             children: [
                               Icon(
@@ -186,6 +257,7 @@ class AppBarWidget extends StatelessWidget {
                         ),
                       ),
                     ),
+
                     Expanded(
                       child: Container(
                         padding: EdgeInsets.all(10),
@@ -220,7 +292,7 @@ class AppBarWidget extends StatelessWidget {
                                 child: SizedBox(
                                   height: 20,
                                   child: Text(
-                                    'Marketing',
+                                    'Coupons',
                                     style: Theme.of(context).textTheme.displayMedium?.copyWith(
                                           color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.black,
                                         ),
@@ -255,25 +327,78 @@ class AppBarWidget extends StatelessWidget {
                               },
                             ),
                           ),
-                          child: Row(
-                            children: [
-                              Icon(
-                                Icons.pie_chart_outline_outlined,
-                                color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey.withValues(alpha: 0.2),
+                          child: PopupMenuButton(
+                            tooltip: '',
+                            position: PopupMenuPosition.under,
+                            color: Colors.white,
+                            onSelected: (value) {
+                              if (value == 1) {
+                                context.read<SwitchPageCubit>().switchPage(2);
+                                context.go('/orders');
+                              } else if (value == 2) {
+                                context.read<SwitchPageCubit>().switchPage(2);
+                                context.go('/orders/returns');
+                              } else if (value == 3) {
+                                context.read<SwitchPageCubit>().switchPage(2);
+                                context.go('/orders/returns');
+                              }
+                            },
+                            itemBuilder: (context) => [
+                              PopupMenuItem(
+                                value: 1,
+                                child: HoverAppBar(
+                                  label: 'Withdrawal',
+                                  imageUrl: "assets/images/shopping-bag.png",
+                                  isSelected: context.read<SwitchPageCubit>().state.selectedPage == 2,
+                                  onTap: () {
+                                    context.read<SwitchPageCubit>().switchPage(2);
+                                    context.go('/orders');
+                                  },
+                                ),
                               ),
-                              SizedBox(width: 5),
-                              Expanded(
-                                child: SizedBox(
-                                  height: 20,
-                                  child: Text(
-                                    'Analytics',
-                                    style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                                          color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.black,
-                                        ),
-                                  ),
+                              PopupMenuItem(
+                                value: 2,
+                                child: HoverAppBar(
+                                  label: 'Reviews',
+                                  imageUrl: "assets/images/menu.png",
+                                  isSelected: context.read<SwitchPageCubit>().state.selectedPage == 4,
+                                  onTap: () {
+                                    context.read<SwitchPageCubit>().switchPage(4);
+                                  },
+                                ),
+                              ),
+                              PopupMenuItem(
+                                value: 3,
+                                child: HoverAppBar(
+                                  label: 'Revenues',
+                                  imageUrl: "assets/images/menu.png",
+                                  isSelected: context.read<SwitchPageCubit>().state.selectedPage == 4,
+                                  onTap: () {
+                                    context.read<SwitchPageCubit>().switchPage(4);
+                                  },
                                 ),
                               ),
                             ],
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.pie_chart_outline_outlined,
+                                  color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey.withValues(alpha: 0.2),
+                                ),
+                                SizedBox(width: 5),
+                                Expanded(
+                                  child: SizedBox(
+                                    height: 20,
+                                    child: Text(
+                                      'Others',
+                                      style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                            color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.black,
+                                          ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),

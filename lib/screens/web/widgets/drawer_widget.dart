@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import '../../../constantes/const.dart';
 import '../../../cubits/switch_page/switch_page_cubit.dart';
 import '../../../cubits/switch_page/switch_page_state.dart';
+import 'hocer_drawer_menu.dart';
 
 class DrawerDashboard extends StatefulWidget {
   const DrawerDashboard({super.key});
@@ -35,177 +36,232 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
   Widget build(BuildContext context) {
     return BlocBuilder<SwitchPageCubit, SwitchPageState>(
       builder: (context, state) => Container(
-        width: Const.screenWidth(context) * 0.2,
+        width: Const.screenWidth(context) * 0.6,
         height: Const.screenHeight(context),
-        color: Colors.grey[200],
+        color: Colors.white,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 10),
-              width: Const.screenWidth(context) * 0.19,
-              height: 35,
-              decoration: BoxDecoration(
-                color: context.read<SwitchPageCubit>().state.selectedPage == 0 ? Theme.of(context).colorScheme.primary : Colors.white,
-              ),
-              child: TextButton(
-                onPressed: () {
-                  context.read<SwitchPageCubit>().switchPage(0);
-                  context.go('/dashboard');
-                },
-                style: ButtonStyle(
-                  overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                    (Set<MaterialState> states) {
-                      if (states.contains(MaterialState.hovered)) {
-                        return Colors.transparent; // Pas d'effet au survol
-                      }
-                      return null; // Laisser les autres états par défaut
-                    },
-                  ),
-                ),
-                child: Row(
-                  children: [
-                    Image.asset(
-                      "assets/images/menu.png",
-                      color: context.read<SwitchPageCubit>().state.selectedPage == 0 ? Colors.white : Colors.grey.withValues(alpha: 0.2),
-                    ),
-                    SizedBox(width: 5),
-                    Text(
-                      'Dashboard',
-                      style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                            color: context.read<SwitchPageCubit>().state.selectedPage == 0 ? Colors.white : Colors.black,
-                          ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 10),
-              width: Const.screenWidth(context) * 0.19,
-              height: 35,
-              decoration: BoxDecoration(
-                color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.white,
-              ),
-              child: TextButton(
-                onPressed: () {
-                  context.read<SwitchPageCubit>().switchPage(3);
-                  context.go('/document/List_document');
-                },
-                style: ButtonStyle(
-                  overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                    (Set<MaterialState> states) {
-                      if (states.contains(MaterialState.hovered)) {
-                        return Colors.transparent; // Pas d'effet au survol
-                      }
-                      return null; // Laisser les autres états par défaut
-                    },
-                  ),
-                ),
-                child: Row(
-                  children: [
-                    Image.asset(
-                      "assets/images/product.png",
-                      color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey.withValues(alpha: 0.2),
-                    ),
-                    SizedBox(width: 5),
-                    SizedBox(
-                      width: Const.screenWidth(context) * 0.1,
-                      child: Text(
-                        'Products',
-                        style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                              color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.black,
-                            ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 50,
-            ),
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 10),
-              width: Const.screenWidth(context) * 0.19,
-              height: 35,
-              decoration: BoxDecoration(
-                color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Theme.of(context).colorScheme.primary : Colors.white,
-              ),
-              child: TextButton(
-                onPressed: () {
-                  context.read<SwitchPageCubit>().switchPage(4);
-                  context.go('/document/List_document');
-                },
-                style: ButtonStyle(
-                  overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                    (Set<MaterialState> states) {
-                      if (states.contains(MaterialState.hovered)) {
-                        return Colors.transparent; // Pas d'effet au survol
-                      }
-                      return null; // Laisser les autres états par défaut
-                    },
-                  ),
-                ),
-                child: Row(
-                  children: [
-                    Image.asset(
-                      "assets/images/business-and-finance.png",
-                      color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey.withValues(alpha: 0.2),
-                    ),
-                    SizedBox(width: 5),
-                    SizedBox(
-                      width: Const.screenWidth(context) * 0.1,
-                      child: Text(
-                        'Income',
-                        style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                              color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.black,
-                            ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Container(
-              width: Const.screenWidth(context) * 0.19,
-              height: 35,
+            Padding(
+              padding: const EdgeInsets.only(left: 10.0, top: 15, right: 10),
               child: Row(
                 children: [
-                  Image.asset(
-                    "assets/images/checkout.png",
-                    color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey.withValues(alpha: 0.2),
+                  Text(
+                    "Menu",
+                    style: Theme.of(context).textTheme.labelMedium!.copyWith(fontWeight: FontWeight.w200),
                   ),
-                  SizedBox(width: 5),
-                  SizedBox(
-                    width: Const.screenWidth(context) * 0.1,
-                    child: Text(
-                      'Orders',
-                      style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                            color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.black,
-                          ),
+                  Spacer(),
+                  Icon(Icons.close),
+                ],
+              ),
+            ),
+            SizedBox(height: 10),
+            Divider(),
+            SizedBox(height: 10),
+            TextButton(
+              onPressed: () {
+                context.read<SwitchPageCubit>().switchPage(0);
+                context.go('/dashboard');
+              },
+              style: ButtonStyle(
+                overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                  (Set<MaterialState> states) {
+                    if (states.contains(MaterialState.hovered)) {
+                      return Colors.transparent; // Pas d'effet au survol
+                    }
+                    return null; // Laisser les autres états par défaut
+                  },
+                ),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: HoverableDrawerItem(
+                      label: 'Dashboard',
+                      icon: Image.asset(
+                        "assets/images/menu.png",
+                        height: 22,
+                        width: 22,
+                        color: context.read<SwitchPageCubit>().state.selectedPage == 0 ? Theme.of(context).colorScheme.primary : Colors.black,
+                      ),
+                      isSelected: context.read<SwitchPageCubit>().state.selectedPage == 0,
+                      onTap: () {
+                        context.read<SwitchPageCubit>().switchPage(0);
+                        context.go('/dashboard');
+                      },
                     ),
                   ),
                 ],
               ),
             ),
-            Container(
-              width: Const.screenWidth(context) * 0.19,
-              height: 35,
+            TextButton(
+              onPressed: () {
+                context.read<SwitchPageCubit>().switchPage(3);
+                context.go('/products');
+              },
+              style: ButtonStyle(
+                overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                  (Set<MaterialState> states) {
+                    if (states.contains(MaterialState.hovered)) {
+                      return Colors.transparent; // Pas d'effet au survol
+                    }
+                    return null; // Laisser les autres états par défaut
+                  },
+                ),
+              ),
               child: Row(
                 children: [
-                  Image.asset(
-                    "assets/images/promotion.png",
-                    color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey.withValues(alpha: 0.2),
+                  Expanded(
+                    child: HoverableDrawerItem(
+                      label: 'Products',
+                      icon: Image.asset(
+                        "assets/images/product.png",
+                        height: 22,
+                        width: 22,
+                        color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.black,
+                      ),
+                      isSelected: context.read<SwitchPageCubit>().state.selectedPage == 3,
+                      onTap: () {
+                        context.read<SwitchPageCubit>().switchPage(3);
+                        context.go('/Products');
+                      },
+                    ),
                   ),
-                  SizedBox(width: 5),
-                  SizedBox(
-                    width: Const.screenWidth(context) * 0.1,
-                    child: Text(
-                      'Promote',
-                      style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                            color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.black,
-                          ),
+                ],
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                context.read<SwitchPageCubit>().switchPage(4);
+                context.go('/orders');
+              },
+              style: ButtonStyle(
+                overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                  (Set<MaterialState> states) {
+                    if (states.contains(MaterialState.hovered)) {
+                      return Colors.transparent; // Pas d'effet au survol
+                    }
+                    return null; // Laisser les autres états par défaut
+                  },
+                ),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: HoverableDrawerItem(
+                      label: 'Orders',
+                      icon: const Icon(Icons.shopping_bag_outlined),
+                      isSelected: context.read<SwitchPageCubit>().state.selectedPage == 2,
+                      onTap: () {
+                        context.read<SwitchPageCubit>().switchPage(2);
+                        context.go('/orders');
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                context.read<SwitchPageCubit>().switchPage(4);
+                context.go('/orders');
+              },
+              style: ButtonStyle(
+                overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                  (Set<MaterialState> states) {
+                    if (states.contains(MaterialState.hovered)) {
+                      return Colors.transparent; // Pas d'effet au survol
+                    }
+                    return null; // Laisser les autres états par défaut
+                  },
+                ),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: HoverableDrawerItem(
+                      label: 'Orders returns',
+                      icon: Image.asset(
+                        "assets/images/menu.png",
+                        height: 22,
+                        width: 22,
+                        color: context.read<SwitchPageCubit>().state.selectedPage == 0 ? Theme.of(context).colorScheme.primary : Colors.black,
+                      ),
+                      isSelected: context.read<SwitchPageCubit>().state.selectedPage == 0,
+                      onTap: () {
+                        context.read<SwitchPageCubit>().switchPage(0);
+                        context.go('/orders-return');
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                context.read<SwitchPageCubit>().switchPage(4);
+                context.go('/orders');
+              },
+              style: ButtonStyle(
+                overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                  (Set<MaterialState> states) {
+                    if (states.contains(MaterialState.hovered)) {
+                      return Colors.transparent; // Pas d'effet au survol
+                    }
+                    return null; // Laisser les autres états par défaut
+                  },
+                ),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: HoverableDrawerItem(
+                      label: 'Reviews',
+                      icon: Icon(
+                        Icons.star_half_outlined,
+                        color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.black,
+                      ),
+                      isSelected: context.read<SwitchPageCubit>().state.selectedPage == 0,
+                      onTap: () {
+                        context.read<SwitchPageCubit>().switchPage(1);
+                        context.go('/reviews');
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                context.read<SwitchPageCubit>().switchPage(4);
+                context.go('/orders');
+              },
+              style: ButtonStyle(
+                overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                  (Set<MaterialState> states) {
+                    if (states.contains(MaterialState.hovered)) {
+                      return Colors.transparent; // Pas d'effet au survol
+                    }
+                    return null; // Laisser les autres états par défaut
+                  },
+                ),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: HoverableDrawerItem(
+                      label: 'Coupons',
+                      icon: Image.asset(
+                        "assets/images/promotion.png",
+                        height: 22,
+                        width: 22,
+                        color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.black,
+                      ),
+                      isSelected: context.read<SwitchPageCubit>().state.selectedPage == 0,
+                      onTap: () {
+                        context.read<SwitchPageCubit>().switchPage(1);
+                        context.go('/copons');
+                      },
                     ),
                   ),
                 ],

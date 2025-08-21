@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shop_easy3/screens/web/products/widgets/product_detail_widget.dart';
 
 import '../../../../constantes/const.dart';
+import '../../utils/utils.dart';
 
 class ProductTableWidget extends StatelessWidget {
   const ProductTableWidget({Key? key}) : super(key: key);
@@ -186,7 +187,7 @@ class ProductTableWidget extends StatelessWidget {
               ],
             ),
             onPressed: () {
-              // Action delete
+              Utils.showDeleteDialog(context);
             },
           ),
         ],

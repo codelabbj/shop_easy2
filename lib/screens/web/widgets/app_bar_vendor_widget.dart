@@ -82,7 +82,15 @@ class AppBarVendorWidget extends StatelessWidget {
                   const SizedBox(width: 20),
 
                   // Menu hamburger
-                  const Icon(Icons.menu, size: 28, color: Colors.black87),
+                  Builder(
+                    // <--- Important
+                    builder: (context) => IconButton(
+                      icon: Icon(Icons.menu),
+                      onPressed: () {
+                        Scaffold.of(context).openDrawer(); // Ouvre le Drawer
+                      },
+                    ),
+                  ),
                 ],
               ),
             ],
