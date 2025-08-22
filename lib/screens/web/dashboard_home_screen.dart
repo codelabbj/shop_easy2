@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
-import 'package:shop_easy3/screens/web/orders/screens/list_orders_screen.dart';
-import 'package:shop_easy3/screens/web/products/screens/list_product_screen.dart';
-import 'package:shop_easy3/screens/web/statistiques/screen/statistiques_screen.dart';
+
+import 'package:shop_easy3/screens/web/pages/orders/screens/list_orders_screen.dart';
+import 'package:shop_easy3/screens/web/pages/products/screens/list_product_screen.dart';
+import 'package:shop_easy3/screens/web/pages/statistiques/screen/statistiques_screen.dart';
 
 import '../../cubits/switch_page/switch_page_cubit.dart';
 import '../../cubits/switch_page/switch_page_state.dart';

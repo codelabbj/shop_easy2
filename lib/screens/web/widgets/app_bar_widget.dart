@@ -269,7 +269,7 @@ class AppBarWidget extends StatelessWidget {
                         child: TextButton(
                           onPressed: () {
                             context.read<SwitchPageCubit>().switchPage(3);
-                            context.go('/dashboard');
+                            context.go('/coupons');
                           },
                           style: ButtonStyle(
                             overlayColor: MaterialStateProperty.resolveWith<Color?>(
@@ -315,7 +315,6 @@ class AppBarWidget extends StatelessWidget {
                         child: TextButton(
                           onPressed: () {
                             context.read<SwitchPageCubit>().switchPage(4);
-                            context.go('/add-product');
                           },
                           style: ButtonStyle(
                             overlayColor: MaterialStateProperty.resolveWith<Color?>(
@@ -339,8 +338,8 @@ class AppBarWidget extends StatelessWidget {
                                 context.read<SwitchPageCubit>().switchPage(2);
                                 context.go('/orders/returns');
                               } else if (value == 3) {
-                                context.read<SwitchPageCubit>().switchPage(2);
-                                context.go('/orders/returns');
+                                context.read<SwitchPageCubit>().switchPage(4);
+                                context.go('/revenues');
                               }
                             },
                             itemBuilder: (context) => [
@@ -375,6 +374,7 @@ class AppBarWidget extends StatelessWidget {
                                   isSelected: context.read<SwitchPageCubit>().state.selectedPage == 4,
                                   onTap: () {
                                     context.read<SwitchPageCubit>().switchPage(4);
+                                    context.go('/revenues');
                                   },
                                 ),
                               ),

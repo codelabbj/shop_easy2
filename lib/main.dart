@@ -5,14 +5,14 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:shop_easy3/screens/mobile/pages/home_mobile_screen.dart';
 import 'package:shop_easy3/screens/mobile/utils/theme/app_theme_light.dart';
-import 'package:shop_easy3/screens/web/authentification_/login_screen.dart';
-import 'package:shop_easy3/screens/web/authentification_/register_screen.dart';
-import 'package:shop_easy3/screens/web/orders/screens/list_orders_screen.dart';
-import 'package:shop_easy3/screens/web/products/screens/add_product_screen.dart';
-import 'package:shop_easy3/screens/web/products/screens/list_grid_product_screen.dart';
-
-import 'package:shop_easy3/screens/web/products/screens/list_product_screen.dart';
-import 'package:shop_easy3/screens/web/statistiques/screen/statistiques_screen.dart';
+import 'package:shop_easy3/screens/web/pages/authentification_/login_screen.dart';
+import 'package:shop_easy3/screens/web/pages/coupons/screens/coupons_screen.dart';
+import 'package:shop_easy3/screens/web/pages/orders/screens/list_orders_screen.dart';
+import 'package:shop_easy3/screens/web/pages/products/screens/add_product_screen.dart';
+import 'package:shop_easy3/screens/web/pages/products/screens/list_grid_product_screen.dart';
+import 'package:shop_easy3/screens/web/pages/products/screens/list_product_screen.dart';
+import 'package:shop_easy3/screens/web/pages/revenues/screens/revenues_screen.dart';
+import 'package:shop_easy3/screens/web/pages/statistiques/screen/statistiques_screen.dart';
 import 'package:url_strategy/url_strategy.dart';
 
 import 'cubits/switch_page/switch_page_cubit.dart';
@@ -69,6 +69,20 @@ final GoRouter _router = GoRouter(
       builder: (BuildContext context, GoRouterState state) {
         context.read<SwitchPageCubit>().switchPage(2); // Sélectionner la page Collaborateurs
         return ListOrdersScreen();
+      },
+    ),
+    GoRoute(
+      path: '/coupons',
+      builder: (BuildContext context, GoRouterState state) {
+        context.read<SwitchPageCubit>().switchPage(3); // Sélectionner la page Collaborateurs
+        return CouponsScreen();
+      },
+    ),
+    GoRoute(
+      path: '/revenues',
+      builder: (BuildContext context, GoRouterState state) {
+        context.read<SwitchPageCubit>().switchPage(4); // Sélectionner la page Liste des documents
+        return RevenuesScreen();
       },
     ),
     GoRoute(

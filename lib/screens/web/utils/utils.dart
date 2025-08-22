@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../models/order_model.dart';
-import '../orders/widgets/order_detail_widget.dart';
+import '../pages/orders/widgets/order_detail_widget.dart';
 
 class Utils {
   static void showOrderDetails(BuildContext context, OrderModel order) {
