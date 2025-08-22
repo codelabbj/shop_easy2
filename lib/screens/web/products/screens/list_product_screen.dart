@@ -189,126 +189,129 @@ class _ListProductScreenState extends State<ListProductScreen> {
                         ),
                       ),
                     ),
-                    CardListWidget(
-                      actions: [
-                        InkWell(
-                          onTap: () {
-                            log("je suis ici");
-                            context.go('/add-product');
-                          },
-                          child: Container(
-                            padding: EdgeInsets.all(5),
-                            decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.add,
-                                  size: 18,
-                                ),
-                                Text(
-                                  "Add Product",
-                                  style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold),
-                                ),
-                              ],
+                    SizedBox(
+                      height: 900,
+                      child: CardListWidget(
+                        actions: [
+                          InkWell(
+                            onTap: () {
+                              log("je suis ici");
+                              context.go('/add-product');
+                            },
+                            child: Container(
+                              padding: EdgeInsets.all(5),
+                              decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.add,
+                                    size: 18,
+                                  ),
+                                  Text(
+                                    "Add Product",
+                                    style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Container(
-                          padding: EdgeInsets.all(5),
-                          decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
-                          child: Row(
-                            children: [
-                              Image.asset(
-                                "assets/images/telecharger.png",
-                                width: 18,
-                                height: 18,
-                                color: Colors.black,
-                              ),
-                              Text(
-                                "Export",
-                                style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold),
-                              ),
-                            ],
+                          SizedBox(
+                            width: 10,
                           ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        InkWell(
-                          onTap: () {
-                            setState(() {
-                              isFilterVisible = !isFilterVisible; // toggle l'affichage
-                            });
-                          },
-                          child: Container(
+                          Container(
                             padding: EdgeInsets.all(5),
                             decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
                             child: Row(
                               children: [
                                 Image.asset(
-                                  "assets/images/filtre.png",
+                                  "assets/images/telecharger.png",
                                   width: 18,
                                   height: 18,
                                   color: Colors.black,
                                 ),
                                 Text(
-                                  "Filter",
+                                  "Export",
                                   style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold),
                                 ),
                               ],
                             ),
                           ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        // InkWell(
-                        //   onTap: () {
-                        //     formList = "list-ui";
-                        //     context.go('/products');
-                        //   },
-                        //   child: Container(
-                        //     padding: EdgeInsets.all(5),
-                        //     decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
-                        //     child: Icon(Icons.picture_in_picture_alt_outlined, size: 18, color: Colors.black),
-                        //   ),
-                        // ),
-                        // SizedBox(
-                        //   width: 10,
-                        // ),
-                        // InkWell(
-                        //   onTap: () {
-                        //     formList = "grid-product";
-                        //     context.go('/grid-product');
-                        //   },
-                        //   child: Container(
-                        //     padding: EdgeInsets.all(5),
-                        //     decoration: BoxDecoration(
-                        //         border: Border.all(color: formList == "grid-product" ? Theme.of(context).colorScheme.primary : Colors.grey[200]!),
-                        //         borderRadius: BorderRadius.circular(5)),
-                        //     child: Row(
-                        //       children: [
-                        //         Icon(Icons.grid_view, size: 18, color: Colors.grey),
-                        //         Icon(
-                        //           Icons.table_rows_outlined,
-                        //           size: 18,
-                        //           color: Colors.grey,
-                        //         ),
-                        //       ],
-                        //     ),
-                        //   ),
-                        // )
-                      ],
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: ConstrainedBox(
-                          constraints: BoxConstraints(
-                            minWidth: MediaQuery.of(context).size.width,
+                          SizedBox(
+                            width: 10,
                           ),
-                          child: ProductTableWidget(),
+                          InkWell(
+                            onTap: () {
+                              setState(() {
+                                isFilterVisible = !isFilterVisible; // toggle l'affichage
+                              });
+                            },
+                            child: Container(
+                              padding: EdgeInsets.all(5),
+                              decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
+                              child: Row(
+                                children: [
+                                  Image.asset(
+                                    "assets/images/filtre.png",
+                                    width: 18,
+                                    height: 18,
+                                    color: Colors.black,
+                                  ),
+                                  Text(
+                                    "Filter",
+                                    style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          // InkWell(
+                          //   onTap: () {
+                          //     formList = "list-ui";
+                          //     context.go('/products');
+                          //   },
+                          //   child: Container(
+                          //     padding: EdgeInsets.all(5),
+                          //     decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
+                          //     child: Icon(Icons.picture_in_picture_alt_outlined, size: 18, color: Colors.black),
+                          //   ),
+                          // ),
+                          // SizedBox(
+                          //   width: 10,
+                          // ),
+                          // InkWell(
+                          //   onTap: () {
+                          //     formList = "grid-product";
+                          //     context.go('/grid-product');
+                          //   },
+                          //   child: Container(
+                          //     padding: EdgeInsets.all(5),
+                          //     decoration: BoxDecoration(
+                          //         border: Border.all(color: formList == "grid-product" ? Theme.of(context).colorScheme.primary : Colors.grey[200]!),
+                          //         borderRadius: BorderRadius.circular(5)),
+                          //     child: Row(
+                          //       children: [
+                          //         Icon(Icons.grid_view, size: 18, color: Colors.grey),
+                          //         Icon(
+                          //           Icons.table_rows_outlined,
+                          //           size: 18,
+                          //           color: Colors.grey,
+                          //         ),
+                          //       ],
+                          //     ),
+                          //   ),
+                          // )
+                        ],
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: ConstrainedBox(
+                            constraints: BoxConstraints(
+                              minWidth: MediaQuery.of(context).size.width,
+                            ),
+                            child: ProductTableWidget(),
+                          ),
                         ),
                       ),
                     ),
