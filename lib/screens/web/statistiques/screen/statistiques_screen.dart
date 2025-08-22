@@ -38,60 +38,131 @@ class _StatistiquesScreenState extends State<StatistiquesScreen> {
                   child: Column(
                     children: [
                       SizedBox(height: 30),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: StatCardWidget(
-                              title: "Average Order Value",
-                              value: "\$85.70",
-                              subtitle: "+150 last month",
-                              percentage: "+13.9%",
-                              isPositive: true,
-                              color: Colors.orangeAccent,
-                              imageUrl: "assets/images/panier.png",
-                            ),
-                          ),
-                          SizedBox(width: 12),
-                          Expanded(
-                            child: StatCardWidget(
-                              title: "Total Income",
-                              value: "\$325,890",
-                              subtitle: "+500,000 last month",
-                              percentage: "+16.1%",
-                              isPositive: true,
-                              imageUrl: "assets/images/marketplace1.png",
-                              color: Colors.green,
-                            ),
-                          ),
-                          SizedBox(width: 12),
-                          Expanded(
-                            child: StatCardWidget(
-                              title: "Total Products",
-                              value: "10",
-                              subtitle: "+2.3% last month",
-                              percentage: "+11.1%",
-                              isPositive: true,
-                              imageUrl: "assets/images/product.png",
-                              color: Colors.blue,
-                            ),
-                          ),
-                          SizedBox(width: 12),
-                          Expanded(
-                            child: StatCardWidget(
-                              title: "Total Orders",
-                              value: "23",
-                              subtitle: "+2,984 last month",
-                              percentage: "-10.5%",
-                              isPositive: false,
-                              color: AppColors.PRIMARY_BLUE_COLOR,
-                              imageUrl: "assets/images/shopping-bag.png",
-                            ),
-                          ),
-                        ],
+                      LayoutBuilder(
+                        builder: (context, constraints) {
+                          double width = constraints.maxWidth;
+
+                          if (width > 1024) {
+                            // Grand écran : on utilise Row + Expanded (layout fluide)
+                            return Row(
+                              children: [
+                                Expanded(
+                                  child: StatCardWidget(
+                                    title: "Average Order Value",
+                                    value: "\$85.70",
+                                    subtitle: "+150 last month",
+                                    percentage: "+13.9%",
+                                    isPositive: true,
+                                    color: Colors.orangeAccent,
+                                    imageUrl: "assets/images/panier.png",
+                                  ),
+                                ),
+                                SizedBox(width: 12),
+                                Expanded(
+                                  child: StatCardWidget(
+                                    title: "Total Income",
+                                    value: "\$325,890",
+                                    subtitle: "+500,000 last month",
+                                    percentage: "+16.1%",
+                                    isPositive: true,
+                                    imageUrl: "assets/images/marketplace1.png",
+                                    color: Colors.green,
+                                  ),
+                                ),
+                                SizedBox(width: 12),
+                                Expanded(
+                                  child: StatCardWidget(
+                                    title: "Total Products",
+                                    value: "10",
+                                    subtitle: "+2.3% last month",
+                                    percentage: "+11.1%",
+                                    isPositive: true,
+                                    imageUrl: "assets/images/product.png",
+                                    color: Colors.blue,
+                                  ),
+                                ),
+                                SizedBox(width: 12),
+                                Expanded(
+                                  child: StatCardWidget(
+                                    title: "Total Orders",
+                                    value: "23",
+                                    subtitle: "+2,984 last month",
+                                    percentage: "-10.5%",
+                                    isPositive: false,
+                                    color: AppColors.PRIMARY_BLUE_COLOR,
+                                    imageUrl: "assets/images/shopping-bag.png",
+                                  ),
+                                ),
+                              ],
+                            );
+                          } else {
+                            // Écran plus petit : on autorise le scroll horizontal
+                            return SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                    width: 250,
+                                    child: StatCardWidget(
+                                      title: "Average Order Value",
+                                      value: "\$85.70",
+                                      subtitle: "+150 last month",
+                                      percentage: "+13.9%",
+                                      isPositive: true,
+                                      color: Colors.orangeAccent,
+                                      imageUrl: "assets/images/panier.png",
+                                    ),
+                                  ),
+                                  SizedBox(width: 12),
+                                  SizedBox(
+                                    width: 250,
+                                    child: StatCardWidget(
+                                      title: "Total Income",
+                                      value: "\$325,890",
+                                      subtitle: "+500,000 last month",
+                                      percentage: "+16.1%",
+                                      isPositive: true,
+                                      imageUrl:
+                                          "assets/images/marketplace1.png",
+                                      color: Colors.green,
+                                    ),
+                                  ),
+                                  SizedBox(width: 12),
+                                  SizedBox(
+                                    width: 250,
+                                    child: StatCardWidget(
+                                      title: "Total Products",
+                                      value: "10",
+                                      subtitle: "+2.3% last month",
+                                      percentage: "+11.1%",
+                                      isPositive: true,
+                                      imageUrl: "assets/images/product.png",
+                                      color: Colors.blue,
+                                    ),
+                                  ),
+                                  SizedBox(width: 12),
+                                  SizedBox(
+                                    width: 250,
+                                    child: StatCardWidget(
+                                      title: "Total Orders",
+                                      value: "23",
+                                      subtitle: "+2,984 last month",
+                                      percentage: "-10.5%",
+                                      isPositive: false,
+                                      color: AppColors.PRIMARY_BLUE_COLOR,
+                                      imageUrl:
+                                          "assets/images/shopping-bag.png",
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
+                          }
+                        },
                       ),
 
                       const SizedBox(height: 16),
-                      StoreOverviewCard(),
+                      // StoreOverviewCard(),
                       const SizedBox(height: 10),
                       // Graphique + produits top ventes
                       Row(
