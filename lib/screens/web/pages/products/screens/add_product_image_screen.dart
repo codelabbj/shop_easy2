@@ -37,6 +37,7 @@ class _AddProductImageScreenState extends State<AddProductImageScreen> {
     return Container(
       margin: EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 15),
       padding: const EdgeInsets.all(20),
+      height: 500,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),

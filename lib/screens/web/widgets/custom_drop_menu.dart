@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_easy3/screens/web/utils/app_colors.dart';
 
 class CustomDropdownField extends StatelessWidget {
   final String label;
@@ -25,9 +26,14 @@ class CustomDropdownField extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(label, style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold, fontSize: 12)),
+          Text(label,
+              style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 12,
+                  )),
           const SizedBox(height: 4),
           DropdownButtonFormField<String>(
+            dropdownColor: AppColors.PRIMARY_WHITE_LIGHT,
             value: value,
             onChanged: onChanged,
             items: items

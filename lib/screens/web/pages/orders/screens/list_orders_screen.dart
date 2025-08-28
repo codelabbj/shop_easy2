@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../../widgets/app_bar_vendor_widget.dart';
 import '../../../widgets/app_bar_widget.dart';
 import '../../../widgets/card_list_widget.dart';
+import '../../../widgets/drawer_widget.dart';
 import '../widgets/orders_tab_widget.dart';
 
 class ListOrdersScreen extends StatefulWidget {
@@ -21,13 +23,23 @@ class _ListOrdersScreenState extends State<ListOrdersScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[100],
+      drawer: DrawerDashboard(),
       body: SafeArea(
         child: Row(
           children: [
             Expanded(
               child: Column(
                 children: [
-                  SizedBox(height: 60, child: AppBarWidget()),
+                  LayoutBuilder(
+                    builder: (context, constraints) {
+                      double width = constraints.maxWidth;
+                      if (width > 1024) {
+                        return SizedBox(height: 60, child: AppBarWidget());
+                      } else {
+                        return AppBarVendorWidget();
+                      }
+                    },
+                  ),
                   SizedBox(height: 30),
                   Expanded(
                     child: CardListWidget(

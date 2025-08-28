@@ -5,100 +5,110 @@ class StoreOverviewCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        // --------- STORE PERFORMANCE ---------
-        Expanded(
-          flex: 2,
-          child: Container(
-            padding: EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 4)],
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Title
-                Row(
-                  children: [
-                    Icon(Icons.store, size: 20),
-                    SizedBox(width: 8),
-                    Text(
-                      "Store Performance",
-                      style: Theme.of(context).textTheme.labelMedium,
-                    ),
-                  ],
-                ),
-                Divider(height: 20),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        double width = constraints.maxWidth;
 
-                // Stats Grid
-                Wrap(
-                  spacing: 40,
-                  runSpacing: 12,
-                  children: [
-                    _buildStatTile(
-                      context,
-                      Icons.shopping_cart,
-                      "CONVERSION RATE",
-                      "61.5%",
-                    ),
-                    _buildStatTile(context, Icons.receipt_long, "AVG. ORDER VALUE", "\$1,262.38"),
-                    _buildStatTile(context, Icons.local_shipping, "FULFILLMENT RATE", "100%"),
-                    _buildStatTile(context, Icons.visibility, "STORE VISIBILITY", "", badge: "Active", badgeColor: Colors.green),
-                  ],
-                ),
-              ],
-            ),
+        if (width > 1024) {
+          // ---------- GRAND ÉCRAN ----------
+          return Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(flex: 2, child: _buildPerformanceCard(context)),
+              SizedBox(width: 16),
+              Expanded(flex: 1, child: _buildQuickActionsCard(context)),
+            ],
+          );
+        } else {
+          // ---------- PETIT ÉCRAN ----------
+          return Column(
+            children: [
+              _buildPerformanceCard(context),
+              SizedBox(height: 16),
+              _buildQuickActionsCard(context),
+            ],
+          );
+        }
+      },
+    );
+  }
+
+  // ----------- STORE PERFORMANCE -----------
+  Widget _buildPerformanceCard(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(16),
+      decoration: _cardDecoration(),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Icon(Icons.store, size: 20),
+              SizedBox(width: 8),
+              Text("Store Performance", style: Theme.of(context).textTheme.labelMedium),
+            ],
           ),
-        ),
-
-        SizedBox(width: 16),
-
-        // --------- QUICK ACTIONS ---------
-        Expanded(
-          flex: 1,
-          child: Container(
-            padding: EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 4)],
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Title
-                Row(
-                  children: [
-                    Icon(Icons.flash_on, size: 20),
-                    SizedBox(width: 8),
-                    Text(
-                      "Quick Actions",
-                      style: Theme.of(context).textTheme.labelMedium,
-                    ),
-                  ],
-                ),
-                Divider(height: 20),
-
-                // Buttons Grid
-                Wrap(
-                  spacing: 10,
-                  runSpacing: 10,
-                  children: [
-                    _actionButton(context, "Add Product", Icons.add, borderColor: Colors.blue),
-                    _actionButton(context, "Create Discount", Icons.percent, borderColor: Colors.lightBlue),
-                    _actionButton(context, "Store Settings", Icons.settings, borderColor: Colors.orange),
-                    _actionButton(context, "Withdrawal", Icons.attach_money, borderColor: Colors.green),
-                  ],
-                ),
-              ],
-            ),
+          Divider(height: 20),
+          Wrap(
+            spacing: 40,
+            runSpacing: 12,
+            children: [
+              _buildStatTile(context, Icons.shopping_cart, "CONVERSION RATE", "61.5%"),
+              _buildStatTile(context, Icons.receipt_long, "AVG. ORDER VALUE", "\$1,262.38"),
+              _buildStatTile(context, Icons.local_shipping, "FULFILLMENT RATE", "100%"),
+              _buildStatTile(
+                context,
+                Icons.visibility,
+                "STORE VISIBILITY",
+                "",
+                badge: "Active",
+                badgeColor: Colors.green,
+              ),
+            ],
           ),
-        ),
-      ],
+        ],
+      ),
+    );
+  }
+
+  // ----------- QUICK ACTIONS -----------
+  Widget _buildQuickActionsCard(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(bottom: 12),
+      padding: EdgeInsets.all(16),
+      decoration: _cardDecoration(),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Icon(Icons.flash_on, size: 20),
+              SizedBox(width: 8),
+              Text("Quick Actions", style: Theme.of(context).textTheme.labelMedium),
+            ],
+          ),
+          Divider(height: 20),
+          Wrap(
+            spacing: 10,
+            runSpacing: 10,
+            children: [
+              _actionButton(context, "Add Product", Icons.add, borderColor: Colors.blue),
+              _actionButton(context, "Create Discount", Icons.percent, borderColor: Colors.lightBlue),
+              _actionButton(context, "Store Settings", Icons.settings, borderColor: Colors.orange),
+              _actionButton(context, "Withdrawal", Icons.attach_money, borderColor: Colors.green),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  // ----------- RÉUTILISABLES -----------
+  BoxDecoration _cardDecoration() {
+    return BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(10),
+      boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 4)],
     );
   }
 
@@ -111,7 +121,11 @@ class StoreOverviewCard extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(label, style: Theme.of(context).textTheme.labelSmall!.copyWith(fontSize: 11, color: Colors.blueGrey)),
+            Text(label,
+                style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                      fontSize: 11,
+                      color: Colors.blueGrey,
+                    )),
             badge != null
                 ? Container(
                     margin: EdgeInsets.only(top: 4),
@@ -122,12 +136,18 @@ class StoreOverviewCard extends StatelessWidget {
                     ),
                     child: Text(
                       badge,
-                      style: Theme.of(context).textTheme.labelSmall!.copyWith(color: Colors.white, fontSize: 12),
+                      style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                            color: Colors.white,
+                            fontSize: 12,
+                          ),
                     ),
                   )
                 : Text(
                     value,
-                    style: Theme.of(context).textTheme.labelSmall!.copyWith(fontSize: 16, fontWeight: FontWeight.bold),
+                    style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
                   ),
           ],
         ),
@@ -139,9 +159,15 @@ class StoreOverviewCard extends StatelessWidget {
     return OutlinedButton.icon(
       onPressed: () {},
       icon: Icon(icon, size: 16, color: borderColor),
-      label: Text(text, style: Theme.of(context).textTheme.labelSmall!.copyWith(color: borderColor)),
+      label: Text(
+        text,
+        style: Theme.of(context).textTheme.labelSmall!.copyWith(
+              color: borderColor,
+            ),
+      ),
       style: OutlinedButton.styleFrom(
         side: BorderSide(color: borderColor),
+        foregroundColor: borderColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
         padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       ),

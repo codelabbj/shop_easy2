@@ -17,11 +17,18 @@ class AppBarVendorWidget extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 12, vertical: 15),
           color: Colors.white,
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Image.asset(
-                "assets/logo.png", // ton image
-                height: 40,
-              ),
+              Builder(
+                  builder: (context) => InkWell(
+                      onTap: () {
+                        Scaffold.of(context).openDrawer(); // Ouvre le Drawer
+                      },
+                      child: Image.asset(
+                        "assets/images/drawer.png",
+                        width: 32,
+                        height: 32,
+                      ))),
               const SizedBox(width: 8),
               const Text(
                 "Shofy.",
@@ -31,37 +38,20 @@ class AppBarVendorWidget extends StatelessWidget {
                   color: Colors.black87,
                 ),
               ),
-              Spacer(),
               Row(
                 children: [
                   // Upload/download
-                  Stack(
-                    clipBehavior: Clip.none,
-                    children: [
-                      const Icon(Icons.sync_alt, size: 28, color: Colors.black87),
-                      Positioned(
-                        right: -6,
-                        top: -6,
-                        child: CircleAvatar(
-                          radius: 10,
-                          backgroundColor: Colors.blue,
-                          child: const Text(
-                            "0",
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+
                   const SizedBox(width: 20),
 
                   Stack(
                     clipBehavior: Clip.none,
                     children: [
-                      const Icon(Icons.shopping_bag_outlined, size: 28, color: Colors.black87),
+                      Image.asset(
+                        "assets/images/shopping-bag.png",
+                        width: 30,
+                        height: 30,
+                      ),
                       Positioned(
                         right: -6,
                         top: -6,
@@ -80,17 +70,9 @@ class AppBarVendorWidget extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(width: 20),
+                  const Icon(Icons.logout_outlined, size: 28, color: Colors.red),
 
                   // Menu hamburger
-                  Builder(
-                    // <--- Important
-                    builder: (context) => IconButton(
-                      icon: Icon(Icons.menu),
-                      onPressed: () {
-                        Scaffold.of(context).openDrawer(); // Ouvre le Drawer
-                      },
-                    ),
-                  ),
                 ],
               ),
             ],

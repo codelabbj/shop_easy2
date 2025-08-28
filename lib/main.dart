@@ -8,11 +8,14 @@ import 'package:shop_easy3/screens/mobile/utils/theme/app_theme_light.dart';
 import 'package:shop_easy3/screens/web/pages/authentification_/login_screen.dart';
 import 'package:shop_easy3/screens/web/pages/coupons/screens/coupons_screen.dart';
 import 'package:shop_easy3/screens/web/pages/orders/screens/list_orders_screen.dart';
+import 'package:shop_easy3/screens/web/pages/others/screens/reviews_screen.dart';
 import 'package:shop_easy3/screens/web/pages/products/screens/add_product_screen.dart';
 import 'package:shop_easy3/screens/web/pages/products/screens/list_grid_product_screen.dart';
 import 'package:shop_easy3/screens/web/pages/products/screens/list_product_screen.dart';
 import 'package:shop_easy3/screens/web/pages/revenues/screens/revenues_screen.dart';
+import 'package:shop_easy3/screens/web/pages/settings/screens/setting_main_screen.dart';
 import 'package:shop_easy3/screens/web/pages/statistiques/screen/statistiques_screen.dart';
+import 'package:shop_easy3/screens/web/pages/withdrawal/screens/withdraws_screen.dart';
 import 'package:url_strategy/url_strategy.dart';
 
 import 'cubits/switch_page/switch_page_cubit.dart';
@@ -78,13 +81,13 @@ final GoRouter _router = GoRouter(
         return CouponsScreen();
       },
     ),
-    GoRoute(
-      path: '/revenues',
-      builder: (BuildContext context, GoRouterState state) {
-        context.read<SwitchPageCubit>().switchPage(4); // Sélectionner la page Liste des documents
-        return RevenuesScreen();
-      },
-    ),
+    // GoRoute(
+    //   path: '/orders-returns',
+    //   builder: (BuildContext context, GoRouterState state) {
+    //     context.read<SwitchPageCubit>().switchPage(4); // Sélectionner la page Liste des documents
+    //     return Order();
+    //   },
+    // ),
     GoRoute(
       path: '/add-product',
       builder: (BuildContext context, GoRouterState state) {
@@ -92,13 +95,28 @@ final GoRouter _router = GoRouter(
         return AddProductScreen();
       },
     ),
-    // GoRoute(
-    //   path: '/collaborateur/nouveau_collaborateur',
-    //   builder: (BuildContext context, GoRouterState state) {
-    //     context.read<SwitchPageCubit>().switchPage(8);
-    //     return const NewCollaborateurScreen();
-    //   },
-    // ),
+
+    GoRoute(
+      path: '/withdrawal',
+      builder: (BuildContext context, GoRouterState state) {
+        context.read<SwitchPageCubit>().switchPage(8);
+        return const WithdrawsScreen();
+      },
+    ),
+    GoRoute(
+      path: '/revenues',
+      builder: (BuildContext context, GoRouterState state) {
+        context.read<SwitchPageCubit>().switchPage(6);
+        return const RevenuesScreen();
+      },
+    ),
+    GoRoute(
+      path: '/reviews',
+      builder: (BuildContext context, GoRouterState state) {
+        context.read<SwitchPageCubit>().switchPage(5);
+        return const ReviewsScreen();
+      },
+    ),
     // GoRoute(
     //   path: '/rapports',
     //   builder: (BuildContext context, GoRouterState state) {
@@ -106,12 +124,13 @@ final GoRouter _router = GoRouter(
     //     return const RapportsScreen();
     //   },
     // ),
-    // GoRoute(
-    //   path: '/',
-    //   builder: (BuildContext context, GoRouterState state) {
-    //     return const UserVerifyPage();
-    //   },
-    // ),
+    GoRoute(
+      path: '/settings',
+      builder: (BuildContext context, GoRouterState state) {
+        context.read<SwitchPageCubit>().switchPage(13); // Sélectionner la page Liste des documents
+        return const SettingsScreen();
+      },
+    ),
     // GoRoute(
     //   path: '/document/view/:identifier',
     //   builder: (context, state) {

@@ -96,7 +96,7 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
             ),
             TextButton(
               onPressed: () {
-                context.read<SwitchPageCubit>().switchPage(3);
+                context.read<SwitchPageCubit>().switchPage(1);
                 context.go('/products');
               },
               style: ButtonStyle(
@@ -118,12 +118,12 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
                         "assets/images/product.png",
                         height: 22,
                         width: 22,
-                        color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.black,
+                        color: context.read<SwitchPageCubit>().state.selectedPage == 1 ? Theme.of(context).colorScheme.primary : Colors.black,
                       ),
-                      isSelected: context.read<SwitchPageCubit>().state.selectedPage == 3,
+                      isSelected: context.read<SwitchPageCubit>().state.selectedPage == 1,
                       onTap: () {
-                        context.read<SwitchPageCubit>().switchPage(3);
-                        context.go('/Products');
+                        context.read<SwitchPageCubit>().switchPage(1);
+                        context.go('/products');
                       },
                     ),
                   ),
@@ -132,7 +132,7 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
             ),
             TextButton(
               onPressed: () {
-                context.read<SwitchPageCubit>().switchPage(4);
+                context.read<SwitchPageCubit>().switchPage(2);
                 context.go('/orders');
               },
               style: ButtonStyle(
@@ -163,8 +163,8 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
             ),
             TextButton(
               onPressed: () {
-                context.read<SwitchPageCubit>().switchPage(4);
-                context.go('/orders');
+                context.read<SwitchPageCubit>().switchPage(9);
+                context.go('/orders-return');
               },
               style: ButtonStyle(
                 overlayColor: MaterialStateProperty.resolveWith<Color?>(
@@ -182,14 +182,14 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
                     child: HoverableDrawerItem(
                       label: 'Orders returns',
                       icon: Image.asset(
-                        "assets/images/menu.png",
+                        "assets/images/reply.png",
                         height: 22,
                         width: 22,
-                        color: context.read<SwitchPageCubit>().state.selectedPage == 0 ? Theme.of(context).colorScheme.primary : Colors.black,
+                        color: context.read<SwitchPageCubit>().state.selectedPage == 9 ? Theme.of(context).colorScheme.primary : Colors.black,
                       ),
-                      isSelected: context.read<SwitchPageCubit>().state.selectedPage == 0,
+                      isSelected: context.read<SwitchPageCubit>().state.selectedPage == 9,
                       onTap: () {
-                        context.read<SwitchPageCubit>().switchPage(0);
+                        context.read<SwitchPageCubit>().switchPage(9);
                         context.go('/orders-return');
                       },
                     ),
@@ -199,8 +199,8 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
             ),
             TextButton(
               onPressed: () {
-                context.read<SwitchPageCubit>().switchPage(4);
-                context.go('/orders');
+                context.read<SwitchPageCubit>().switchPage(5);
+                context.go('/revenues');
               },
               style: ButtonStyle(
                 overlayColor: MaterialStateProperty.resolveWith<Color?>(
@@ -219,11 +219,11 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
                       label: 'Reviews',
                       icon: Icon(
                         Icons.star_half_outlined,
-                        color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.black,
+                        color: context.read<SwitchPageCubit>().state.selectedPage == 5 ? Theme.of(context).colorScheme.primary : Colors.black,
                       ),
-                      isSelected: context.read<SwitchPageCubit>().state.selectedPage == 0,
+                      isSelected: context.read<SwitchPageCubit>().state.selectedPage == 5,
                       onTap: () {
-                        context.read<SwitchPageCubit>().switchPage(1);
+                        context.read<SwitchPageCubit>().switchPage(5);
                         context.go('/reviews');
                       },
                     ),
@@ -233,8 +233,8 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
             ),
             TextButton(
               onPressed: () {
-                context.read<SwitchPageCubit>().switchPage(4);
-                context.go('/orders');
+                context.read<SwitchPageCubit>().switchPage(3);
+                context.go('/coupons');
               },
               style: ButtonStyle(
                 overlayColor: MaterialStateProperty.resolveWith<Color?>(
@@ -242,7 +242,7 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
                     if (states.contains(MaterialState.hovered)) {
                       return Colors.transparent; // Pas d'effet au survol
                     }
-                    return null; // Laisser les autres états par défaut
+                    return null;
                   },
                 ),
               ),
@@ -257,10 +257,46 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
                         width: 22,
                         color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.black,
                       ),
-                      isSelected: context.read<SwitchPageCubit>().state.selectedPage == 0,
+                      isSelected: context.read<SwitchPageCubit>().state.selectedPage == 3,
                       onTap: () {
-                        context.read<SwitchPageCubit>().switchPage(1);
-                        context.go('/copons');
+                        context.read<SwitchPageCubit>().switchPage(3);
+                        context.go('/coupons');
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                context.read<SwitchPageCubit>().switchPage(13);
+                context.go('/settings');
+              },
+              style: ButtonStyle(
+                overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                  (Set<MaterialState> states) {
+                    if (states.contains(MaterialState.hovered)) {
+                      return Colors.transparent; // Pas d'effet au survol
+                    }
+                    return null;
+                  },
+                ),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: HoverableDrawerItem(
+                      label: 'Settings',
+                      icon: Image.asset(
+                        "assets/images/settings.png",
+                        height: 22,
+                        width: 22,
+                        color: context.read<SwitchPageCubit>().state.selectedPage == 13 ? Theme.of(context).colorScheme.primary : Colors.black,
+                      ),
+                      isSelected: context.read<SwitchPageCubit>().state.selectedPage == 13,
+                      onTap: () {
+                        context.read<SwitchPageCubit>().switchPage(13);
+                        context.go('/settings');
                       },
                     ),
                   ),

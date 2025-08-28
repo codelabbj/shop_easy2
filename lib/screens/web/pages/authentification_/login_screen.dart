@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:shop_easy3/screens/web/widgets/customs_text_form_field.dart';
 
-import '../../widgets/customs_text_form_field.dart';
+import '../../../../constantes/const.dart';
+import '../../utils/app_colors.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -22,15 +25,25 @@ class _LoginScreenState extends State<LoginScreen> {
         children: [
           Expanded(
             flex: 2,
-            child: Padding(
-              padding: const EdgeInsets.all(15.0),
+            child: Container(
+              margin: EdgeInsets.symmetric(horizontal: Const.screenWidth(context) * 0.08),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text("Welcome Back", style: Theme.of(context).textTheme.headlineMedium),
+                  Text(
+                    "Welcome Back",
+                    style: GoogleFonts.albertSans(
+                      fontSize: 40,
+                      fontWeight: FontWeight.w900,
+                      color: Colors.black,
+                    ),
+                  ),
                   const SizedBox(height: 8),
-                  const Text("Enter your email and password to access your account."),
+                  Text(
+                    "Enter your email and password to access your account.",
+                    style: Theme.of(context).textTheme.labelSmall,
+                  ),
                   const SizedBox(height: 24),
                   CustomTextFormField(
                     label: "Email",
@@ -76,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         onPressed: () {},
                         child: Text(
                           "Forgot Your Password?",
-                          style: Theme.of(context).textTheme.displaySmall!.copyWith(color: Colors.blueAccent),
+                          style: Theme.of(context).textTheme.displaySmall!.copyWith(color: AppColors.PRIMARY_BLUE_COLOR),
                         ),
                       ),
                     ],
@@ -84,54 +97,99 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(height: 16),
                   SizedBox(
                     width: double.infinity,
-                    height: 45,
+                    height: 40,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blueAccent, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
+                          backgroundColor: AppColors.PRIMARY_BLUE_COLOR, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
                       onPressed: () {
                         // Call login logic
                       },
                       child: Text(
-                        "Log In",
+                        "Sign In",
                         style: Theme.of(context).textTheme.labelMedium!.copyWith(color: Colors.white),
                       ),
                     ),
                   ),
                   const SizedBox(height: 16),
-                  Center(
-                      child: Text(
-                    "Or Login With",
-                    style: Theme.of(context).textTheme.labelSmall!.copyWith(color: Colors.grey[500]),
-                  )),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Divider(
+                          color: Colors.grey[300],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                        child: Text(
+                          "Or Login With",
+                          style: Theme.of(context).textTheme.labelSmall!.copyWith(color: Colors.grey[500]),
+                        ),
+                      ),
+                      Expanded(
+                        child: Divider(
+                          color: Colors.grey[300],
+                        ),
+                      ),
+                    ],
+                  ),
                   const SizedBox(height: 12),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      OutlinedButton.icon(
-                        style: OutlinedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
-                        icon: const Icon(
-                          Icons.g_mobiledata,
-                          color: Colors.blueAccent,
-                          size: 35,
+                      Expanded(
+                        flex: 2,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.white,
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+                              side: BorderSide(color: Colors.grey[400]!)),
+                          onPressed: () {
+                            // Call login logic
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset(
+                                "assets/images/google_logo.webp",
+                                width: 20,
+                                height: 20,
+                              ),
+                              SizedBox(width: 5),
+                              Text(
+                                "Sign In google",
+                                style: Theme.of(context).textTheme.displaySmall!.copyWith(color: Colors.black),
+                              ),
+                            ],
+                          ),
                         ),
-                        label: Text(
-                          "Google",
-                          style: Theme.of(context).textTheme.labelMedium,
-                        ),
-                        onPressed: () {},
                       ),
                       const SizedBox(width: 16),
-                      OutlinedButton.icon(
-                        style: OutlinedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5))),
-                        icon: const Icon(
-                          Icons.apple,
-                          size: 35,
+                      Expanded(
+                        flex: 2,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.white,
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+                              side: BorderSide(color: Colors.grey[400]!)),
+                          onPressed: () {
+                            // Call login logic
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset(
+                                "assets/images/facebook_logo.png",
+                                width: 23,
+                                height: 23,
+                              ),
+                              SizedBox(width: 5),
+                              Text(
+                                "Sign In with facebook",
+                                style: Theme.of(context).textTheme.displaySmall!.copyWith(color: Colors.black),
+                              ),
+                            ],
+                          ),
                         ),
-                        label: Text(
-                          "Apple",
-                          style: Theme.of(context).textTheme.labelMedium,
-                        ),
-                        onPressed: () {},
                       ),
                     ],
                   ),
@@ -142,11 +200,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Text.rich(
                         TextSpan(
                           text: "Don’t Have An Account? ",
-                          style: Theme.of(context).textTheme.labelMedium!.copyWith(),
+                          style: Theme.of(context).textTheme.displaySmall!.copyWith(),
                           children: [
                             TextSpan(
-                              text: "Register Now.",
-                              style: Theme.of(context).textTheme.labelMedium!.copyWith(fontWeight: FontWeight.bold, color: Colors.blueAccent),
+                              text: "Sign Up.",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .displaySmall!
+                                  .copyWith(fontWeight: FontWeight.bold, color: AppColors.PRIMARY_BLUE_COLOR),
                             )
                           ],
                         ),
@@ -162,10 +223,12 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Container(
                   width: double.infinity,
                   height: double.infinity,
-                  decoration: BoxDecoration(color: Colors.blueAccent, borderRadius: BorderRadius.circular(30)),
+                  decoration: BoxDecoration(
+                      color: AppColors.PRIMARY_BLUE_COLOR,
+                      borderRadius: BorderRadius.only(topLeft: Radius.circular(30), bottomLeft: Radius.circular(30))),
                   child: Container(
                     margin: EdgeInsets.all(20),
-                    decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/images/image_dasboard.webp'))),
+                    decoration: BoxDecoration(image: DecorationImage(fit: BoxFit.cover, image: AssetImage('assets/images/mobile-shopping-app.png'))),
                   )))
         ],
       ),

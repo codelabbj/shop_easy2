@@ -226,7 +226,7 @@ class AppBarWidget extends StatelessWidget {
                               value: 2,
                               child: HoverAppBar(
                                 label: 'Orders returns',
-                                imageUrl: "assets/images/menu.png",
+                                imageUrl: "assets/images/reply.png",
                                 isSelected: context.read<SwitchPageCubit>().state.selectedPage == 4,
                                 onTap: () {
                                   context.read<SwitchPageCubit>().switchPage(4);
@@ -310,95 +310,93 @@ class AppBarWidget extends StatelessWidget {
                         height: double.infinity,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(30),
-                          color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Theme.of(context).colorScheme.primary : Colors.white,
+                          color: context.read<SwitchPageCubit>().state.selectedPage == 8 ||
+                                  context.read<SwitchPageCubit>().state.selectedPage == 6 ||
+                                  context.read<SwitchPageCubit>().state.selectedPage == 5
+                              ? Theme.of(context).colorScheme.primary
+                              : Colors.white,
                         ),
-                        child: TextButton(
-                          onPressed: () {
-                            context.read<SwitchPageCubit>().switchPage(4);
+                        child: PopupMenuButton(
+                          tooltip: '',
+                          position: PopupMenuPosition.under,
+                          color: Colors.white,
+                          onSelected: (value) {
+                            if (value == 1) {
+                              context.read<SwitchPageCubit>().switchPage(4);
+                              context.go('/withdrawal');
+                            } else if (value == 2) {
+                              context.read<SwitchPageCubit>().switchPage(4);
+                              context.go('/reviews');
+                            } else if (value == 3) {
+                              context.read<SwitchPageCubit>().switchPage(4);
+                              context.go('/revenues');
+                            }
                           },
-                          style: ButtonStyle(
-                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                              (Set<MaterialState> states) {
-                                if (states.contains(MaterialState.hovered)) {
-                                  return Colors.transparent; // Pas d'effet au survol
-                                }
-                                return null;
-                              },
+                          itemBuilder: (context) => [
+                            PopupMenuItem(
+                              value: 1,
+                              child: HoverAppBar(
+                                label: 'Withdrawal',
+                                imageUrl: "assets/images/wallet.png",
+                                isSelected: context.read<SwitchPageCubit>().state.selectedPage == 2,
+                                onTap: () {
+                                  context.read<SwitchPageCubit>().switchPage(4);
+                                  context.go('/withdrawal');
+                                },
+                              ),
                             ),
-                          ),
-                          child: PopupMenuButton(
-                            tooltip: '',
-                            position: PopupMenuPosition.under,
-                            color: Colors.white,
-                            onSelected: (value) {
-                              if (value == 1) {
-                                context.read<SwitchPageCubit>().switchPage(2);
-                                context.go('/orders');
-                              } else if (value == 2) {
-                                context.read<SwitchPageCubit>().switchPage(2);
-                                context.go('/orders/returns');
-                              } else if (value == 3) {
-                                context.read<SwitchPageCubit>().switchPage(4);
-                                context.go('/revenues');
-                              }
-                            },
-                            itemBuilder: (context) => [
-                              PopupMenuItem(
-                                value: 1,
-                                child: HoverAppBar(
-                                  label: 'Withdrawal',
-                                  imageUrl: "assets/images/shopping-bag.png",
-                                  isSelected: context.read<SwitchPageCubit>().state.selectedPage == 2,
-                                  onTap: () {
-                                    context.read<SwitchPageCubit>().switchPage(2);
-                                    context.go('/orders');
-                                  },
-                                ),
+                            PopupMenuItem(
+                              value: 2,
+                              child: HoverAppBar(
+                                label: 'Reviews',
+                                imageUrl: "assets/images/review.png",
+                                isSelected: context.read<SwitchPageCubit>().state.selectedPage == 4,
+                                onTap: () {
+                                  context.read<SwitchPageCubit>().switchPage(5);
+                                  context.go('/reviews');
+                                },
                               ),
-                              PopupMenuItem(
-                                value: 2,
-                                child: HoverAppBar(
-                                  label: 'Reviews',
-                                  imageUrl: "assets/images/menu.png",
-                                  isSelected: context.read<SwitchPageCubit>().state.selectedPage == 4,
-                                  onTap: () {
-                                    context.read<SwitchPageCubit>().switchPage(4);
-                                  },
-                                ),
+                            ),
+                            PopupMenuItem(
+                              value: 3,
+                              child: HoverAppBar(
+                                label: 'Revenues',
+                                imageUrl: "assets/images/money.png",
+                                isSelected: context.read<SwitchPageCubit>().state.selectedPage == 6,
+                                onTap: () {
+                                  context.read<SwitchPageCubit>().switchPage(6);
+                                  context.go('/revenues');
+                                },
                               ),
-                              PopupMenuItem(
-                                value: 3,
-                                child: HoverAppBar(
-                                  label: 'Revenues',
-                                  imageUrl: "assets/images/menu.png",
-                                  isSelected: context.read<SwitchPageCubit>().state.selectedPage == 4,
-                                  onTap: () {
-                                    context.read<SwitchPageCubit>().switchPage(4);
-                                    context.go('/revenues');
-                                  },
+                            ),
+                          ],
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.pie_chart_outline_outlined,
+                                color: context.read<SwitchPageCubit>().state.selectedPage == 8 ||
+                                        context.read<SwitchPageCubit>().state.selectedPage == 6 ||
+                                        context.read<SwitchPageCubit>().state.selectedPage == 5
+                                    ? Colors.white
+                                    : Colors.grey.withValues(alpha: 0.2),
+                              ),
+                              SizedBox(width: 5),
+                              Expanded(
+                                child: SizedBox(
+                                  height: 20,
+                                  child: Text(
+                                    'Others',
+                                    style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                          color: context.read<SwitchPageCubit>().state.selectedPage == 8 ||
+                                                  context.read<SwitchPageCubit>().state.selectedPage == 6 ||
+                                                  context.read<SwitchPageCubit>().state.selectedPage == 5
+                                              ? Colors.white
+                                              : Colors.black,
+                                        ),
+                                  ),
                                 ),
                               ),
                             ],
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.pie_chart_outline_outlined,
-                                  color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey.withValues(alpha: 0.2),
-                                ),
-                                SizedBox(width: 5),
-                                Expanded(
-                                  child: SizedBox(
-                                    height: 20,
-                                    child: Text(
-                                      'Others',
-                                      style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                                            color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.black,
-                                          ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
                           ),
                         ),
                       ),
@@ -467,14 +465,23 @@ class AppBarWidget extends StatelessWidget {
                       SizedBox(
                         width: 5,
                       ),
-                      Container(
-                        width: 30,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(color: Colors.grey[200], shape: BoxShape.circle),
-                        child: Icon(
-                          Icons.settings_outlined,
-                          color: Colors.black54,
-                          size: 18,
+                      InkWell(
+                        onTap: () {
+                          context.read<SwitchPageCubit>().switchPage(13);
+                          context.go('/settings');
+                        },
+                        child: Container(
+                          width: 30,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              color:
+                                  context.read<SwitchPageCubit>().state.selectedPage == 13 ? Theme.of(context).colorScheme.primary : Colors.grey[200],
+                              shape: BoxShape.circle),
+                          child: Icon(
+                            Icons.settings_outlined,
+                            color: context.read<SwitchPageCubit>().state.selectedPage == 13 ? Colors.white : Colors.black54,
+                            size: 18,
+                          ),
                         ),
                       ),
                       SizedBox(

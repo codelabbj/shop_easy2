@@ -1,13 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shop_easy3/screens/web/pages/statistiques/widgets/store_overview_card.dart';
 
 import 'package:shop_easy3/screens/web/utils/app_colors.dart';
+import 'package:shop_easy3/screens/web/widgets/app_bar_vendor_widget.dart';
 import 'package:shop_easy3/screens/web/widgets/app_bar_widget.dart';
 
-import '../../../widgets/card_list_widget.dart';
-import '../../orders/widgets/orders_tab_widget.dart';
-
+import '../../../widgets/drawer_widget.dart';
+import '../widgets/customers_reviews_widget.dart';
 import '../widgets/inventory_stock_widget.dart';
+import '../widgets/orders_recent_widget.dart';
 import '../widgets/pie_chart_widget.dart';
 import '../widgets/sales_chart_widget.dart';
 import '../widgets/stat_card_widget.dart';
@@ -25,24 +27,41 @@ class _StatistiquesScreenState extends State<StatistiquesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[100],
+      drawer: DrawerDashboard(),
       body: SafeArea(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 60, child: AppBarWidget()),
+            LayoutBuilder(
+              builder: (context, constraints) {
+                double width = constraints.maxWidth;
+                if (width > 1024) {
+                  return SizedBox(height: 60, child: AppBarWidget());
+                } else {
+                  return AppBarVendorWidget();
+                }
+              },
+            ),
+            SizedBox(height: 12),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              child: Text("Dashboard", style: Theme.of(context).textTheme.labelLarge!.copyWith(fontSize: 35, fontWeight: FontWeight.bold)),
+            ),
             Expanded(
               child: SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 14.0),
-                  child: Column(
-                    children: [
-                      SizedBox(height: 30),
-                      LayoutBuilder(
-                        builder: (context, constraints) {
-                          double width = constraints.maxWidth;
+                  child: LayoutBuilder(
+                    builder: (context, constraints) {
+                      double width = constraints.maxWidth;
 
-                          if (width > 1024) {
-                            // Grand écran : on utilise Row + Expanded (layout fluide)
-                            return Row(
+                      if (width > 1024) {
+                        // ✅ Desktop layout (comme tu l’avais fait)
+                        return Column(
+                          children: [
+                            SizedBox(height: 30),
+                            // Stat cards row
+                            Row(
                               children: [
                                 Expanded(
                                   child: StatCardWidget(
@@ -92,10 +111,57 @@ class _StatistiquesScreenState extends State<StatistiquesScreen> {
                                   ),
                                 ),
                               ],
-                            );
-                          } else {
-                            // Écran plus petit : on autorise le scroll horizontal
-                            return SingleChildScrollView(
+                            ),
+                            SizedBox(height: 16),
+                            StoreOverviewCard(),
+
+                            // Charts row
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Expanded(flex: 2, child: SalesChartWidget()),
+                                SizedBox(width: 16),
+                                Expanded(
+                                  flex: 1,
+                                  child: InventoryPieChart(
+                                    inStock: 5,
+                                    lowStock: 4,
+                                    outOfStock: 2,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 12),
+
+                            // Orders + Reviews
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Expanded(flex: 2, child: RecentOrdersWidget()),
+                                Expanded(flex: 1, child: CustomerReviewsWidget()),
+                              ],
+                            ),
+
+                            // Top selling + Inventory
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Flexible(
+                                  flex: 2,
+                                  child: TopSellingProductsWidget(),
+                                ),
+                                Expanded(flex: 1, child: InventoryStatusCard()),
+                              ],
+                            )
+                          ],
+                        );
+                      } else {
+                        // ✅ Mobile layout (tout en Column)
+                        return Column(
+                          children: [
+                            SizedBox(height: 30),
+                            // Stat cards scroll horizontal
+                            SingleChildScrollView(
                               scrollDirection: Axis.horizontal,
                               child: Row(
                                 children: [
@@ -152,63 +218,26 @@ class _StatistiquesScreenState extends State<StatistiquesScreen> {
                                   ),
                                 ],
                               ),
-                            );
-                          }
-                        },
-                      ),
-
-                      const SizedBox(height: 16),
-                      // StoreOverviewCard(),
-                      const SizedBox(height: 10),
-                      // Graphique + produits top ventes
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Expanded(flex: 2, child: SalesChartWidget()),
-                          SizedBox(width: 16),
-                          Expanded(
-                            flex: 1,
-                            child: InventoryPieChart(
-                              inStock: 5,
-                              lowStock: 4,
-                              outOfStock: 2,
                             ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 12),
-                      // Row(
-                      //   children: [
-                      //     CardListWidget(
-                      //       child: SingleChildScrollView(
-                      //         scrollDirection: Axis.horizontal,
-                      //         child: ProductTableWidget(),
-                      //       ),
-                      //     )
-                      //   ],
-                      // ),
+                            SizedBox(height: 16),
+                            StoreOverviewCard(),
+                            // Charts en colonne
+                            SalesChartWidget(),
+                            SizedBox(height: 16),
+                            InventoryPieChart(inStock: 5, lowStock: 4, outOfStock: 2),
 
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Expanded(
-                            flex: 2,
-                            child: CardListWidget(
-                              child: SingleChildScrollView(
-                                scrollDirection: Axis.horizontal,
-                                child: ConstrainedBox(
-                                  constraints: BoxConstraints(
-                                    minWidth: MediaQuery.of(context).size.width,
-                                  ),
-                                  child: OrdersTabWidget(),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Expanded(flex: 1, child: InventoryStatusCard()),
-                        ],
-                      ),
-                    ],
+                            SizedBox(height: 16),
+                            RecentOrdersWidget(),
+                            SizedBox(height: 16),
+                            CustomerReviewsWidget(),
+                            SizedBox(height: 16),
+                            TopSellingProductsWidget(),
+                            SizedBox(height: 16),
+                            InventoryStatusCard(),
+                          ],
+                        );
+                      }
+                    },
                   ),
                 ),
               ),

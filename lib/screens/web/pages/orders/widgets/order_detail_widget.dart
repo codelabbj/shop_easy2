@@ -63,9 +63,9 @@ class OrderTrackingWidget extends StatelessWidget {
           const SizedBox(height: 24),
 
           // Order ID et Date
-          _buildInfoSection('Order ID Detail', order.id),
+          _buildInfoSection('Order ID Detail', order.id ?? ""),
           const SizedBox(height: 16),
-          _buildInfoSection('Created Date', order.formattedDate),
+          _buildInfoSection('Created Date', order.formattedDate ?? ""),
 
           const SizedBox(height: 24),
 
@@ -144,14 +144,14 @@ class OrderTrackingWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        order.productName,
+                        order.productName ?? "",
                         style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
                       Text(
-                        order.productCategory,
+                        order.productCategory ?? "",
                         style: TextStyle(
                           fontSize: 14,
                           color: Colors.grey.shade600,
@@ -164,14 +164,14 @@ class OrderTrackingWidget extends StatelessWidget {
                             width: 12,
                             height: 12,
                             decoration: BoxDecoration(
-                              color: _getColorFromName(order.productColor),
+                              color: _getColorFromName(order.productColor ?? ""),
                               shape: BoxShape.circle,
                               border: Border.all(color: Colors.grey.shade300),
                             ),
                           ),
                           const SizedBox(width: 8),
                           Text(
-                            order.productColor,
+                            order.productColor ?? "",
                             style: TextStyle(
                               fontSize: 12,
                               color: Colors.grey.shade600,
@@ -179,7 +179,7 @@ class OrderTrackingWidget extends StatelessWidget {
                           ),
                           const SizedBox(width: 16),
                           Text(
-                            order.productStorage,
+                            order.productStorage ?? "",
                             style: TextStyle(
                               fontSize: 12,
                               color: Colors.grey.shade600,
@@ -348,10 +348,10 @@ class OrderTrackingWidget extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 16),
-        ...order.trackingSteps.asMap().entries.map((entry) {
+        ...order.trackingSteps!.asMap().entries.map((entry) {
           int index = entry.key;
           TrackingStepModel step = entry.value;
-          bool isLast = index == order.trackingSteps.length - 1;
+          bool isLast = index == ((order.trackingSteps?.length ?? 0) - 1);
 
           return _buildTrackingStep(step, isLast);
         }).toList(),

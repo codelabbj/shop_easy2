@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../widgets/app_bar_vendor_widget.dart';
+import '../../../widgets/app_bar_widget.dart';
 import '../../../widgets/card_list_widget.dart';
 import '../../../widgets/custom_drop_menu.dart';
 import '../../../widgets/drawer_widget.dart';
@@ -48,7 +49,16 @@ class _ListProductScreenState extends State<ListProductScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            SizedBox(height: 60, child: AppBarVendorWidget()),
+            LayoutBuilder(
+              builder: (context, constraints) {
+                double width = constraints.maxWidth;
+                if (width > 1024) {
+                  return SizedBox(height: 60, child: AppBarWidget());
+                } else {
+                  return AppBarVendorWidget();
+                }
+              },
+            ),
             Expanded(
               child: SingleChildScrollView(
                 child: Column(

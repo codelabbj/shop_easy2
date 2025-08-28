@@ -19,13 +19,13 @@ class PromotedCard extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Image.asset(product.imageUrl, height: 60, width: 60),
+          Image.asset(product.imageUrl ?? "", height: 60, width: 60),
           const SizedBox(width: 12),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(product.title,
+                Text(product.title ?? "",
                     style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis)),
                 Text('\$${product.price}', style: Theme.of(context).textTheme.labelSmall!.copyWith(color: Colors.blue)),
                 Container(

@@ -8,6 +8,7 @@ class CustomTextFormField extends StatelessWidget {
   final Widget? suffixIcon;
   final TextInputType keyboardType;
   final bool isMultiline;
+  final ValueChanged<String>? onChanged;
 
   const CustomTextFormField({
     Key? key,
@@ -16,6 +17,7 @@ class CustomTextFormField extends StatelessWidget {
     required this.controller,
     this.obscureText = false,
     this.suffixIcon,
+    this.onChanged,
     this.keyboardType = TextInputType.text,
     this.isMultiline = false,
   }) : super(key: key);
@@ -36,6 +38,7 @@ class CustomTextFormField extends StatelessWidget {
           obscureText: obscureText,
           maxLines: isMultiline ? 3 : 1,
           keyboardType: keyboardType,
+          onChanged: onChanged,
           style: Theme.of(context).textTheme.labelSmall,
           decoration: InputDecoration(
             hintText: hintText,
