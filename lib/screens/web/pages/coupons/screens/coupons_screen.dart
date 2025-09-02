@@ -24,6 +24,7 @@ class _CouponsScreenState extends State<CouponsScreen> {
           children: [
             Expanded(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   LayoutBuilder(
                     builder: (context, constraints) {
@@ -34,6 +35,11 @@ class _CouponsScreenState extends State<CouponsScreen> {
                         return AppBarVendorWidget();
                       }
                     },
+                  ),
+                  SizedBox(height: 12),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                    child: Text("Coupons", style: Theme.of(context).textTheme.labelLarge!.copyWith(fontSize: 35, fontWeight: FontWeight.bold)),
                   ),
                   SizedBox(height: 30),
                   Expanded(

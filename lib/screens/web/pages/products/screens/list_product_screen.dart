@@ -48,6 +48,7 @@ class _ListProductScreenState extends State<ListProductScreen> {
       drawer: DrawerDashboard(),
       body: SafeArea(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             LayoutBuilder(
               builder: (context, constraints) {
@@ -58,6 +59,11 @@ class _ListProductScreenState extends State<ListProductScreen> {
                   return AppBarVendorWidget();
                 }
               },
+            ),
+            SizedBox(height: 12),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              child: Text("Products", style: Theme.of(context).textTheme.labelLarge!.copyWith(fontSize: 35, fontWeight: FontWeight.bold)),
             ),
             Expanded(
               child: SingleChildScrollView(

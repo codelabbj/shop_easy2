@@ -40,8 +40,6 @@ class AppBarVendorWidget extends StatelessWidget {
               ),
               Row(
                 children: [
-                  // Upload/download
-
                   const SizedBox(width: 20),
 
                   Stack(

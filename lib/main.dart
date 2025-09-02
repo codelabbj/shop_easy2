@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import 'package:shop_easy3/screens/mobile/pages/home_mobile_screen.dart';
-import 'package:shop_easy3/screens/mobile/utils/theme/app_theme_light.dart';
 import 'package:shop_easy3/screens/web/pages/authentification_/login_screen.dart';
 import 'package:shop_easy3/screens/web/pages/coupons/screens/coupons_screen.dart';
 import 'package:shop_easy3/screens/web/pages/orders/screens/list_orders_screen.dart';
+import 'package:shop_easy3/screens/web/pages/orders/screens/oders_returns_screen.dart';
 import 'package:shop_easy3/screens/web/pages/others/screens/reviews_screen.dart';
 import 'package:shop_easy3/screens/web/pages/products/screens/add_product_screen.dart';
 import 'package:shop_easy3/screens/web/pages/products/screens/list_grid_product_screen.dart';
@@ -16,6 +14,7 @@ import 'package:shop_easy3/screens/web/pages/revenues/screens/revenues_screen.da
 import 'package:shop_easy3/screens/web/pages/settings/screens/setting_main_screen.dart';
 import 'package:shop_easy3/screens/web/pages/statistiques/screen/statistiques_screen.dart';
 import 'package:shop_easy3/screens/web/pages/withdrawal/screens/withdraws_screen.dart';
+import 'package:shop_easy3/screens/web/utils/app_colors.dart';
 import 'package:url_strategy/url_strategy.dart';
 
 import 'cubits/switch_page/switch_page_cubit.dart';
@@ -28,7 +27,7 @@ void main() async {
 
 var kColorScheme = ColorScheme.fromSeed(
   seedColor: Colors.white,
-  primary: Color(0xFFFF5722),
+  primary: AppColors.PRIMARY_BLUE_COLOR,
 );
 final GoRouter _router = GoRouter(
   initialLocation: '/',
@@ -81,13 +80,13 @@ final GoRouter _router = GoRouter(
         return CouponsScreen();
       },
     ),
-    // GoRoute(
-    //   path: '/orders-returns',
-    //   builder: (BuildContext context, GoRouterState state) {
-    //     context.read<SwitchPageCubit>().switchPage(4); // Sélectionner la page Liste des documents
-    //     return Order();
-    //   },
-    // ),
+    GoRoute(
+      path: '/orders-return',
+      builder: (BuildContext context, GoRouterState state) {
+        context.read<SwitchPageCubit>().switchPage(4); // Sélectionner la page Liste des documents
+        return OdersReturnsScreen();
+      },
+    ),
     GoRoute(
       path: '/add-product',
       builder: (BuildContext context, GoRouterState state) {

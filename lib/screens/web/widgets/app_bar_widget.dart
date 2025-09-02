@@ -194,7 +194,9 @@ class AppBarWidget extends StatelessWidget {
                         height: double.infinity,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(30),
-                          color: context.read<SwitchPageCubit>().state.selectedPage == 2 ? Theme.of(context).colorScheme.primary : Colors.white,
+                          color: context.read<SwitchPageCubit>().state.selectedPage == 2 || context.read<SwitchPageCubit>().state.selectedPage == 4
+                              ? Theme.of(context).colorScheme.primary
+                              : Colors.white,
                         ),
                         child: PopupMenuButton<int>(
                           tooltip: '',
@@ -202,10 +204,10 @@ class AppBarWidget extends StatelessWidget {
                           color: Colors.white,
                           onSelected: (value) {
                             if (value == 1) {
-                              context.read<SwitchPageCubit>().switchPage(2);
+                              context.read<SwitchPageCubit>().switchPage(3);
                               context.go('/orders');
                             } else if (value == 2) {
-                              context.read<SwitchPageCubit>().switchPage(2);
+                              context.read<SwitchPageCubit>().switchPage(3);
                               context.go('/orders/returns');
                             }
                           },
@@ -230,6 +232,7 @@ class AppBarWidget extends StatelessWidget {
                                 isSelected: context.read<SwitchPageCubit>().state.selectedPage == 4,
                                 onTap: () {
                                   context.read<SwitchPageCubit>().switchPage(4);
+                                  context.go('/orders-return');
                                 },
                               ),
                             ),
@@ -238,7 +241,10 @@ class AppBarWidget extends StatelessWidget {
                             children: [
                               Icon(
                                 Icons.shopping_bag_outlined,
-                                color: context.read<SwitchPageCubit>().state.selectedPage == 2 ? Colors.white : Colors.grey.withValues(alpha: 0.2),
+                                color:
+                                    context.read<SwitchPageCubit>().state.selectedPage == 2 || context.read<SwitchPageCubit>().state.selectedPage == 4
+                                        ? Colors.white
+                                        : Colors.grey.withValues(alpha: 0.2),
                               ),
                               SizedBox(width: 5),
                               Expanded(
@@ -247,7 +253,10 @@ class AppBarWidget extends StatelessWidget {
                                   child: Text(
                                     'Orders',
                                     style: Theme.of(context).textTheme.displayMedium?.copyWith(
-                                          color: context.read<SwitchPageCubit>().state.selectedPage == 2 ? Colors.white : Colors.black,
+                                          color: context.read<SwitchPageCubit>().state.selectedPage == 2 ||
+                                                  context.read<SwitchPageCubit>().state.selectedPage == 4
+                                              ? Colors.white
+                                              : Colors.black,
                                         ),
                                   ),
                                 ),
@@ -338,9 +347,9 @@ class AppBarWidget extends StatelessWidget {
                               child: HoverAppBar(
                                 label: 'Withdrawal',
                                 imageUrl: "assets/images/wallet.png",
-                                isSelected: context.read<SwitchPageCubit>().state.selectedPage == 2,
+                                isSelected: context.read<SwitchPageCubit>().state.selectedPage == 8,
                                 onTap: () {
-                                  context.read<SwitchPageCubit>().switchPage(4);
+                                  context.read<SwitchPageCubit>().switchPage(8);
                                   context.go('/withdrawal');
                                 },
                               ),

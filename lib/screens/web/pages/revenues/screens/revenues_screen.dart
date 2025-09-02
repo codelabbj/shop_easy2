@@ -24,6 +24,7 @@ class _RevenuesScreenState extends State<RevenuesScreen> {
           children: [
             Expanded(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   LayoutBuilder(
                     builder: (context, constraints) {
@@ -34,6 +35,11 @@ class _RevenuesScreenState extends State<RevenuesScreen> {
                         return AppBarVendorWidget();
                       }
                     },
+                  ),
+                  SizedBox(height: 12),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                    child: Text("Revenues", style: Theme.of(context).textTheme.labelLarge!.copyWith(fontSize: 35, fontWeight: FontWeight.bold)),
                   ),
                   SizedBox(height: 30),
                   Expanded(

@@ -29,6 +29,7 @@ class _ListOrdersScreenState extends State<ListOrdersScreen> {
           children: [
             Expanded(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   LayoutBuilder(
                     builder: (context, constraints) {
@@ -39,6 +40,11 @@ class _ListOrdersScreenState extends State<ListOrdersScreen> {
                         return AppBarVendorWidget();
                       }
                     },
+                  ),
+                  SizedBox(height: 12),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                    child: Text("Orders", style: Theme.of(context).textTheme.labelLarge!.copyWith(fontSize: 35, fontWeight: FontWeight.bold)),
                   ),
                   SizedBox(height: 30),
                   Expanded(

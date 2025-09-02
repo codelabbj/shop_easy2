@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -51,7 +49,12 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
                     style: Theme.of(context).textTheme.labelMedium!.copyWith(fontWeight: FontWeight.w200),
                   ),
                   Spacer(),
-                  Icon(Icons.close),
+                  IconButton(
+                    icon: Icon(Icons.close),
+                    onPressed: () {
+                      Navigator.pop(context); // ferme le drawer
+                    },
+                  ),
                 ],
               ),
             ),
@@ -78,12 +81,7 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
                   Expanded(
                     child: HoverableDrawerItem(
                       label: 'Dashboard',
-                      icon: Image.asset(
-                        "assets/images/menu.png",
-                        height: 22,
-                        width: 22,
-                        color: context.read<SwitchPageCubit>().state.selectedPage == 0 ? Theme.of(context).colorScheme.primary : Colors.black,
-                      ),
+                      imageUrl: "assets/images/menu.png",
                       isSelected: context.read<SwitchPageCubit>().state.selectedPage == 0,
                       onTap: () {
                         context.read<SwitchPageCubit>().switchPage(0);
@@ -114,12 +112,7 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
                   Expanded(
                     child: HoverableDrawerItem(
                       label: 'Products',
-                      icon: Image.asset(
-                        "assets/images/product.png",
-                        height: 22,
-                        width: 22,
-                        color: context.read<SwitchPageCubit>().state.selectedPage == 1 ? Theme.of(context).colorScheme.primary : Colors.black,
-                      ),
+                      imageUrl: "assets/images/product.png",
                       isSelected: context.read<SwitchPageCubit>().state.selectedPage == 1,
                       onTap: () {
                         context.read<SwitchPageCubit>().switchPage(1);
@@ -150,7 +143,7 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
                   Expanded(
                     child: HoverableDrawerItem(
                       label: 'Orders',
-                      icon: const Icon(Icons.shopping_bag_outlined),
+                      imageUrl: "assets/images/shopping-bag.png",
                       isSelected: context.read<SwitchPageCubit>().state.selectedPage == 2,
                       onTap: () {
                         context.read<SwitchPageCubit>().switchPage(2);
@@ -163,7 +156,7 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
             ),
             TextButton(
               onPressed: () {
-                context.read<SwitchPageCubit>().switchPage(9);
+                context.read<SwitchPageCubit>().switchPage(4);
                 context.go('/orders-return');
               },
               style: ButtonStyle(
@@ -181,15 +174,10 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
                   Expanded(
                     child: HoverableDrawerItem(
                       label: 'Orders returns',
-                      icon: Image.asset(
-                        "assets/images/reply.png",
-                        height: 22,
-                        width: 22,
-                        color: context.read<SwitchPageCubit>().state.selectedPage == 9 ? Theme.of(context).colorScheme.primary : Colors.black,
-                      ),
-                      isSelected: context.read<SwitchPageCubit>().state.selectedPage == 9,
+                      imageUrl: "assets/images/reply.png",
+                      isSelected: context.read<SwitchPageCubit>().state.selectedPage == 4,
                       onTap: () {
-                        context.read<SwitchPageCubit>().switchPage(9);
+                        context.read<SwitchPageCubit>().switchPage(4);
                         context.go('/orders-return');
                       },
                     ),
@@ -217,10 +205,7 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
                   Expanded(
                     child: HoverableDrawerItem(
                       label: 'Reviews',
-                      icon: Icon(
-                        Icons.star_half_outlined,
-                        color: context.read<SwitchPageCubit>().state.selectedPage == 5 ? Theme.of(context).colorScheme.primary : Colors.black,
-                      ),
+                      imageUrl: "assets/images/engrenages.png",
                       isSelected: context.read<SwitchPageCubit>().state.selectedPage == 5,
                       onTap: () {
                         context.read<SwitchPageCubit>().switchPage(5);
@@ -251,12 +236,7 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
                   Expanded(
                     child: HoverableDrawerItem(
                       label: 'Coupons',
-                      icon: Image.asset(
-                        "assets/images/promotion.png",
-                        height: 22,
-                        width: 22,
-                        color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.black,
-                      ),
+                      imageUrl: "assets/images/promotion.png",
                       isSelected: context.read<SwitchPageCubit>().state.selectedPage == 3,
                       onTap: () {
                         context.read<SwitchPageCubit>().switchPage(3);
@@ -287,12 +267,7 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
                   Expanded(
                     child: HoverableDrawerItem(
                       label: 'Settings',
-                      icon: Image.asset(
-                        "assets/images/settings.png",
-                        height: 22,
-                        width: 22,
-                        color: context.read<SwitchPageCubit>().state.selectedPage == 13 ? Theme.of(context).colorScheme.primary : Colors.black,
-                      ),
+                      imageUrl: "assets/images/settings.png",
                       isSelected: context.read<SwitchPageCubit>().state.selectedPage == 13,
                       onTap: () {
                         context.read<SwitchPageCubit>().switchPage(13);

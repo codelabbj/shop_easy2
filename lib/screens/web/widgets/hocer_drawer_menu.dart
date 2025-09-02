@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 
 class HoverableDrawerItem extends StatefulWidget {
   final String label;
-  final Widget icon;
+  final String imageUrl;
   final VoidCallback onTap;
   final bool isSelected;
 
   const HoverableDrawerItem({
     super.key,
     required this.label,
-    required this.icon,
+    required this.imageUrl,
     required this.onTap,
     required this.isSelected,
   });
@@ -44,12 +44,11 @@ class _HoverableDrawerItemState extends State<HoverableDrawerItem> {
           ),
           child: Row(
             children: [
-              IconTheme(
-                data: IconThemeData(
-                  color: isActive ? primaryColor : Colors.black,
-                  size: 20,
-                ),
-                child: widget.icon,
+              Image.asset(
+                widget.imageUrl,
+                height: 17,
+                width: 17,
+                color: isActive ? primaryColor : Colors.black,
               ),
               const SizedBox(width: 10),
               Expanded(
